@@ -3,7 +3,7 @@ using Meta.WitAi.Dictation;
 using Meta.WitAi.CallbackHandlers;
 using UnityEngine.Events;
 using Oculus.Voice;
-
+using System.Collections;
 
 public class VoiceSystem : MonoBehaviour
 {
@@ -27,9 +27,14 @@ public class VoiceSystem : MonoBehaviour
         _appVoiceExperience.VoiceEvents.OnPartialTranscription.AddListener(OnPartialTranscription);
         _appVoiceExperience.VoiceEvents.OnFullTranscription.AddListener(OnFullTranscription);
 
-        _appVoiceExperience.Activate();
+        StartCoroutine(ActivateDelayed());
     }
 
+    IEnumerator ActivateDelayed()
+    {
+        yield return new WaitForSeconds(2);
+        _appVoiceExperience.Activate();
+    }
 
     private void ReactivateVoice() => _appVoiceExperience.Activate();
 
