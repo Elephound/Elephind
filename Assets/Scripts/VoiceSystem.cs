@@ -1,37 +1,62 @@
 using UnityEngine;
-using Meta.WitAi;
 using Meta.WitAi.Dictation;
+using Meta.WitAi.CallbackHandlers;
+using UnityEngine.Events;
+using Oculus.Voice;
+
 
 public class VoiceSystem : MonoBehaviour
 {
-    /// <summary>
-    /// Reference to the voice service that will be activated or deactivated
-    /// </summary>
-    [Tooltip("Reference to the current voice service")]
-    [SerializeField] private VoiceService _voiceService;
-
-      // Whether an audio request is still activated or not
-        private bool _isActive = false;
-
     // Current audio request for specific deactivation
-   
-      [SerializeField] private DictationService _dictation;
+    [SerializeField] private AppVoiceExperience _appVoiceExperience;
+    [SerializeField] private WitResponseMatcher _witResponseMatcher;
 
-        void Start()
-        {
+    [SerializeField] private UnityEvent _wakeWordDetected;
 
-        }
+    [SerializeField] private UnityEvent<string> _completeTranscription;
 
-        
-        public void ToggleActivation()
-        {
-            if (_dictation.MicActive)
-            {
-                _dictation.Deactivate();
-            }
-            else
-            {
-                _dictation.Activate();
-            }
-        }
+    private bool _voiceCommandReady;
+
+    private string _transcriptionText;
+
+
+
+    void Awake()
+    {
+        _appVoiceExperience.VoiceEvents.OnRequestCompleted.AddListener(ReactivateVoice);
+        _appVoiceExperience.VoiceEvents.OnPartialTranscription.AddListener(OnPartialTranscription);
+        _appVoiceExperience.VoiceEvents.OnFullTranscription.AddListener(OnFullTranscription);
+
+        _appVoiceExperience.Activate();
+    }
+
+
+    private void ReactivateVoice() => _appVoiceExperience.Activate();
+
+    public void WakeWordDetected(string[] arg0)
+    {
+        _voiceCommandReady = true;
+        _wakeWordDetected.Invoke();
+    }
+
+    void OnPartialTranscription(string transcription)
+    {
+        if (!_voiceCommandReady) return;
+        _transcriptionText = transcription;
+    }
+
+    void OnFullTranscription(string transcription)
+    {
+        if (!_voiceCommandReady) return;
+        _voiceCommandReady = false;
+        _transcriptionText = transcription;
+        _completeTranscription?.Invoke(_transcriptionText);
+    }
+
+    private void OnDestroy()
+    {
+        _appVoiceExperience.VoiceEvents.OnRequestCompleted.RemoveListener(ReactivateVoice);
+        _appVoiceExperience.VoiceEvents.OnPartialTranscription.RemoveListener(OnPartialTranscription);
+        _appVoiceExperience.VoiceEvents.OnFullTranscription.RemoveListener(OnFullTranscription);
+    }
 }
