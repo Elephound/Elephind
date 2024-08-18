@@ -141,8 +141,6 @@ PlayerSettings:
   tvOSBundleVersion: 1.0
   bundleVersion: 0.1.0
   preloadedAssets:
-  - {fileID: -4815471266129252141, guid: 51e3726e33e866c40a6cb5374e76f860, type: 2}
-  - {fileID: 11400000, guid: 0b5c6bb45691cad45882a310799e7132, type: 2}
   - {fileID: 11400000, guid: 1f68b5052a140904db0dea2915a2ce31, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -164,7 +162,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.UnityTechnologies.com.unity.template.urpblank
+    Android: com.elephound.com.elephind
     Standalone: com.Unity-Technologies.com.unity.template.urp-blank
     iPhone: com.Unity-Technologies.com.unity.template.urp-blank
   buildNumber:
