@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.Events;
 
 
 
@@ -65,6 +66,10 @@ public class StorageContainerManager : MonoBehaviour
 
     StorageContainerMono activeContainer;
 
+    public bool IsInSetupPhase=false;
+
+    public UnityEvent<bool> SetupPhaseChanged;
+
 
     void Awake()
     {
@@ -77,6 +82,20 @@ public class StorageContainerManager : MonoBehaviour
     {
         _filePath = Path.Combine(Application.persistentDataPath, _folderPath);
         LoadRoomData();
+
+        StartSetupPhase();
+    }
+
+    public void StartSetupPhase()
+    {
+        SetupPhaseChanged.Invoke(true);
+        IsInSetupPhase=true;
+    }
+
+    public void EndSetupPhase()
+    {
+        SetupPhaseChanged.Invoke(false);
+        IsInSetupPhase=false;
     }
 
     public bool UpdateContainerScreenshot()

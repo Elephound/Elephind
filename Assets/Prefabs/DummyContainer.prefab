@@ -135,5 +135,5 @@ MonoBehaviour:
   _containerID: 1
   _renderer: {fileID: 4812883292778777423}
   _normalMaterial: {fileID: 2100000, guid: cc8747b3266f5c84c8b5c623c79db926, type: 2}
-  _activeMaterial: {fileID: 2100000, guid: c946a05b161703d44888a134ed81bea3, type: 2}
+  _activeMaterial: {fileID: 2100000, guid: a24866f4e87cc694d89d0116390aa5e0, type: 2}
   IsActivated: 0
