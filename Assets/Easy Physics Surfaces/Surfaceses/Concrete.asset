@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d32acff58b686d4d80b6c34fbc226e6, type: 3}
+  m_Name: Concrete
+  m_EditorClassIdentifier: 
+  HeavyStepThreshold: 0.7
+  Footsteps:
+  - {fileID: 8300000, guid: c68190f54081a7047a052dbb863bd6ea, type: 3}
+  - {fileID: 8300000, guid: dfa2589bfaf1fe74a8f211dc8644c456, type: 3}
+  - {fileID: 8300000, guid: 223cb9f5139ebba4b85635e448d7e27b, type: 3}
+  - {fileID: 8300000, guid: 8fdf36c11f26dab478f0e2c1a2cbccdc, type: 3}
+  - {fileID: 8300000, guid: 9cfb7a52cdbe65a46af4ae57e9a99683, type: 3}
+  - {fileID: 8300000, guid: 28e231d8aa9f4c44a9b63c383f707de5, type: 3}
+  HeavyFootsteps:
+  - {fileID: 8300000, guid: 38d32c7daa03c674cab443ec5202891f, type: 3}
+  - {fileID: 8300000, guid: 78e2334b1362fe44f8450929e1f4e5b7, type: 3}
+  - {fileID: 8300000, guid: 5dff2c8683b641e498b34a4be761154c, type: 3}
+  - {fileID: 8300000, guid: 434ba3237b64f92439af27a4b3509787, type: 3}
+  - {fileID: 8300000, guid: 3998a9dc1376eb342945a3b46d6b4314, type: 3}
