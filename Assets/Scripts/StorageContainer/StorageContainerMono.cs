@@ -20,15 +20,16 @@ public class StorageContainerMono : MonoBehaviour
     [SerializeField] Renderer _renderer;
     [SerializeField] Material _normalMaterial;
     [SerializeField] Material _activeMaterial;
-      [SerializeField] Material _markedMaterial;
+    [SerializeField] Material _markedMaterial;
     [SerializeField] Collider _ownCollider;
 
 
     bool firsStageActive = true;
     bool secondStageActive = true;
     [SerializeField] GameObject _firstStageUI;
-    [SerializeField] TextMeshProUGUI _containerName;
-     [SerializeField] TextMeshProUGUI _contentText;
+    [SerializeField] TextMeshProUGUI _containerNameStage1;
+    [SerializeField] TextMeshProUGUI _containerNameStage2;
+    [SerializeField] TextMeshProUGUI _contentText;
     [SerializeField] GameObject _secondStageUI;
     [SerializeField] UnityEngine.UI.Image _containerImage;
 
@@ -37,7 +38,7 @@ public class StorageContainerMono : MonoBehaviour
     void Awake()
     {
         _ownSpatialAnchor = this.transform.GetComponentInParent<OVRSpatialAnchor>();
-        if(_ownSpatialAnchor == null) 
+        if (_ownSpatialAnchor == null)
             Debug.LogError("spawned but didnt find own anchor");
         _containerID = GuidToInt(_ownSpatialAnchor.Uuid);
 
@@ -61,7 +62,7 @@ public class StorageContainerMono : MonoBehaviour
 
 
         UpdateUIContent();
-        
+
     }
 
 
@@ -69,16 +70,16 @@ public class StorageContainerMono : MonoBehaviour
     {
         StorageContainerManager.Instance.SetupPhaseChanged.AddListener(ToggleCollider);
         StorageContainerManager.Instance.RegisterStorageContainerMono(this);
-     
+
     }
 
-      void OnDisable()
+    void OnDisable()
     {
         StorageContainerManager.Instance.SetupPhaseChanged.RemoveListener(ToggleCollider);
     }
 
 
-    
+
 
     void ToggleCollider(bool value)
     {
@@ -91,19 +92,19 @@ public class StorageContainerMono : MonoBehaviour
 
     public void SetContainerAsActive(bool value)
     {
-        if(value == true)
+        if (value == true)
             StorageContainerManager.Instance.SetContainerAsActive(this);
         IsActivated = value;
     }
 
     public void SetContainerActiveVisual(int value)
     {
-        if(value == 0)
+        if (value == 0)
             _renderer.material = _normalMaterial;
         else if (value == 1)
             _renderer.material = _activeMaterial;
         else if (value == 2)
-         _renderer.material = _markedMaterial;
+            _renderer.material = _markedMaterial;
     }
 
 
@@ -116,13 +117,16 @@ public class StorageContainerMono : MonoBehaviour
     void UpdateUIContent()
     {
         StorageContainer containerData = StorageContainerManager.Instance.GetStorageContainerData(_containerID);
-        if(containerData== null)
+        if (containerData == null)
             return;
+        _containerNameStage1.text = containerData.Description;
+        _containerNameStage2.text = containerData.Description;
+
         //_contentText.text = containerData.items;
-        _containerName.text = containerData.Description;
+
         Texture2D texture = containerData.GetTexture2D();
-        if(texture != null)   
-        { 
+        if (texture != null)
+        {
             _containerImage.sprite = ConvertTexture2DToSprite(texture);
         }
         else
@@ -132,40 +136,40 @@ public class StorageContainerMono : MonoBehaviour
 
     public void SetFirstStageUIActive(bool value)
     {
-        if(firsStageActive == value)
+        if (firsStageActive == value)
             return;
-        if(value)
+        if (value)
             UpdateUIContent();
 
         _firstStageUI.SetActive(value);
-         firsStageActive =value;
+        firsStageActive = value;
 
     }
 
     public void SetSecondStageUIActive(bool value)
     {
-         if(secondStageActive == value)
+        if (secondStageActive == value)
             return;
 
-          if(value)
+        if (value)
             UpdateUIContent();
 
         _secondStageUI.SetActive(value);
-        secondStageActive =value;
+        secondStageActive = value;
     }
 
     private Sprite ConvertTexture2DToSprite(Texture2D texture)
     {
         // Create a new Sprite from the Texture2D
         return Sprite.Create(
-            texture, 
-            new Rect(0.0f, 0.0f, texture.width, texture.height), 
-            new Vector2(0.5f, 0.5f), 
+            texture,
+            new Rect(0.0f, 0.0f, texture.width, texture.height),
+            new Vector2(0.5f, 0.5f),
             100.0f); // Pixels per unit, adjust based on your requirements
     }
 
-    
-    
+
+
 
 
 
