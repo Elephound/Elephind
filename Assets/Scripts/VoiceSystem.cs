@@ -33,6 +33,8 @@ public class VoiceSystem : MonoBehaviour
 
     [SerializeField] GameObject DEBUGOBJECT;
 
+    public UnityEvent<string> ShowTextOnUI;
+
 
 
     void Awake()
@@ -96,12 +98,14 @@ public class VoiceSystem : MonoBehaviour
     public void SpeakText(string text)
     {
         text = FormatText(text);
+        ShowTextOnUI.Invoke(text);
       /*  if(_speaker.IsSpeaking)
                  StartCoroutine(SpeakAsync(text, queued));
         else */
         _speaker.Speak(text);
 
     }
+
 
    /*  private IEnumerator SpeakAsync(string phrase, bool queued)
         {
