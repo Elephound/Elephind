@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using TMPro;
 using Newtonsoft.Json;
+using UnityEngine.Events;
 //using UnityEngine.UIElements;
 
 public class WebRequester : MonoBehaviour
@@ -18,6 +19,8 @@ public class WebRequester : MonoBehaviour
     [SerializeField] private string baseWebAddress; // https://elephound-backend-git-preview-mario-deutschmanns-projects.vercel.app
                                                     // http://localhost:3000
     [SerializeField] private string sessionId;
+
+    public UnityEvent<GenericResponse> RequestCompleted;
 
 
     // Dictionary to store header key-value pairs
@@ -54,7 +57,6 @@ public class WebRequester : MonoBehaviour
     public void SendStorageUnit(StorageContainer storageContainer)
     {
         string base64String = Convert.ToBase64String(storageContainer.ScreenshotData);
-       
 
         StartCoroutine(CaptureStorageUnitFromImage(storageContainer.ContainerID.ToString(), base64String, 
                 storageContainer.Description, 1234.ToString()));
@@ -123,7 +125,7 @@ public class WebRequester : MonoBehaviour
                 }
 
                 Debug.Log(responseObject);
-
+                RequestCompleted.Invoke(responseObject);
             }
         }
     }
@@ -137,7 +139,7 @@ public class WebRequester : MonoBehaviour
 
     public void SendTranscription(string text)
     {
-
+        StartCoroutine(SendChatMessage(text));
     }
 
     IEnumerator GetRequest(string uri)

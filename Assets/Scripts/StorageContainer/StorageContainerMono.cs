@@ -39,8 +39,7 @@ public class StorageContainerMono : MonoBehaviour
             Debug.LogError("spawned but didnt find own anchor");
         _containerID = GuidToInt(_ownSpatialAnchor.Uuid);
 
-        StorageContainerManager.Instance.SetContainerAsActive(this);
-        StorageContainerManager.Instance.CreateStorageContainer();
+        StorageContainerManager.Instance.CreateStorageContainer(_containerID);
 
     }
 

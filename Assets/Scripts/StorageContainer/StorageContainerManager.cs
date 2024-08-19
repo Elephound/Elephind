@@ -34,6 +34,8 @@ public class StorageContainer
     public byte[] ScreenshotData;
     public string Description;
 
+    public List<Item> Items;
+
     public StorageContainer(int containerID, Texture2D texture2D)
     {
         Description = "";
@@ -42,6 +44,8 @@ public class StorageContainer
             else
             ScreenshotData= null;
         ContainerID = containerID;
+
+        Items = new List<Item>();
     }
 
      public StorageContainer(int containerID, Texture2D texture2D, string description)
@@ -54,6 +58,11 @@ public class StorageContainer
      public void UpdateTextureData(Texture2D texture2D)
      {
             ScreenshotData = texture2D.EncodeToJPG();
+     }
+
+     public void AddItemToList(Item item)
+     {
+        Items.Add(item);
      }
 
     public Texture2D GetTexture2D()
@@ -83,6 +92,8 @@ public class StorageContainerManager : MonoBehaviour
 
     public UnityEvent<bool> SetupPhaseChanged;
 
+    [SerializeField] GameObject DEBUGOBJECT;
+
 
     void Awake()    
     {
@@ -96,6 +107,15 @@ public class StorageContainerManager : MonoBehaviour
         _filePath = Path.Combine(Application.persistentDataPath, _folderPath);
         room = new Room(); //LoadRoomData();
 
+        DEBUGOBJECT.SetActive(false);
+
+    }
+
+    public void UpdateContainerData(int id, string description, List<Item> items)
+    {
+        StorageContainer storageContainer = room.StorageContainers.Find(storage => storage.ContainerID == id);
+        storageContainer.Description = description;
+        storageContainer.Items = items;
     }
 
     public void ToggleSetupPhase()
@@ -111,6 +131,7 @@ public class StorageContainerManager : MonoBehaviour
         SetupPhaseChanged.Invoke(true);
         IsInSetupPhase=true;
 
+        DEBUGOBJECT.SetActive(true);
         DisableAllHighlights();
     }
 
@@ -119,6 +140,7 @@ public class StorageContainerManager : MonoBehaviour
         SetupPhaseChanged.Invoke(false);
         IsInSetupPhase=false;
 
+DEBUGOBJECT.SetActive(false);
         activeContainer = null;
         DisableAllHighlights();
 
@@ -149,9 +171,9 @@ public class StorageContainerManager : MonoBehaviour
         }
     }
 
-    public void CreateStorageContainer()
+    public void CreateStorageContainer(int containerID)
     {
-        StorageContainer newStorageContainer = new StorageContainer(activeContainer.GetContainerID(), null);
+        StorageContainer newStorageContainer = new StorageContainer(containerID, null);
         room.AddStorageContainer(newStorageContainer);
     }
 

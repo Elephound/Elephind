@@ -6,6 +6,7 @@ public class StorageContainerCustomPokeInteraction : MonoBehaviour
 
     [SerializeField] private StorageContainerMono storageContainerMono;
 
+    bool isTouched;
 
     void OnTriggerEnter(Collider collider)
     {
@@ -15,11 +16,19 @@ public class StorageContainerCustomPokeInteraction : MonoBehaviour
         if(!StorageContainerManager.Instance.IsInSetupPhase)
             return;
 
+        if(isTouched)
+            return;
+
+        isTouched=true;
         UpdateContainer();
     }
 
      void OnTriggerExit(Collider collider)
     {
+       if(!collider.GetComponent<HandTag>())
+        return;
+
+        isTouched = false;
 
     }
 

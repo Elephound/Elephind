@@ -5,6 +5,8 @@ using UnityEngine.Events;
 using Oculus.Voice;
 using System.Collections;
 using System;
+using Oculus.Interaction.Samples;
+using Unity.VisualScripting;
 
 public class VoiceSystem : MonoBehaviour
 {
@@ -27,16 +29,22 @@ public class VoiceSystem : MonoBehaviour
 
     private string _transcriptionText;
 
+    static public VoiceSystem Instance;
+
 
 
     void Awake()
     {
+        if(Instance == null)
+            Instance = this;
+
         _appVoiceExperience.VoiceEvents.OnRequestCompleted.AddListener(ReactivateVoice);
         _appVoiceExperience.VoiceEvents.OnPartialTranscription.AddListener(OnPartialTranscription);
         _appVoiceExperience.VoiceEvents.OnFullTranscription.AddListener(OnFullTranscription);
 
         StartCoroutine(ActivateDelayed());
     }
+
 
 //do this to prevent an error 
     IEnumerator ActivateDelayed()
