@@ -272,8 +272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72136c561e4358143929208a5fe4edfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseWebAddress: https://elephound-backend-git-preview-mario-deutschmanns-projects.vercel.app/api/helloworld?x-vercel-protection-bypass=UqndmmoWezkSatYYW3KDvkg3inolbmJg
+  baseWebAddress: https://elephound-backend-git-preview-mario-deutschmanns-projects.vercel.app
   sessionId: 1234
+  headers:
+  - key: x-vercel-protection-bypass
+    value: UqndmmoWezkSatYYW3KDvkg3inolbmJg
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

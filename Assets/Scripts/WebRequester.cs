@@ -1,22 +1,31 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
 
 public class WebRequester : MonoBehaviour
 {
-    [SerializeField] private string baseWebAddress;
+    // Konstante für den "HelloWorld" Endpoint
+    private const string ENDPOINT_HELLOWORLD = "/api/helloworld";
+
+    [SerializeField] private string baseWebAddress; // https://elephound-backend-git-preview-mario-deutschmanns-projects.vercel.app
+                                                    // /api/helloworld
     [SerializeField] private string sessionId;
 
+    // Dictionary to store header key-value pairs
+    [SerializeField] private List<Header> headers = new List<Header>();//x-vercel-protection-bypass=UqndmmoWezkSatYYW3KDvkg3inolbmJg
 
-    void Awake()
+    [System.Serializable]
+    public class Header
     {
-        
+        public string key;
+        public string value;
     }
 
     private void Start()
     {
         Debug.Log("Start: Fuck (- where is) the hammer?!");
-        StartCoroutine(GetRequest(baseWebAddress));
+        StartCoroutine(GetRequest(baseWebAddress+ ENDPOINT_HELLOWORLD));
     }
 
     public void TestCall()
@@ -53,6 +62,9 @@ public class WebRequester : MonoBehaviour
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
             Debug.Log("GetRequest 1: " + uri);
+
+            AddHeaders(webRequest); // Add headers to the request
+
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
@@ -73,6 +85,14 @@ public class WebRequester : MonoBehaviour
                     Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                     break;
             }
+        }
+    }
+
+    private void AddHeaders(UnityWebRequest request)
+    {
+        foreach (Header header in headers)
+        {
+            request.SetRequestHeader(header.key, header.value);
         }
     }
 }
