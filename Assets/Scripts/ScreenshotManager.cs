@@ -122,9 +122,15 @@ public class ScreenshotManager : MonoBehaviour
 
     private IEnumerator ProcessNewImage(string imagePath)
     {
+
         var fileData = File.ReadAllBytes(imagePath);
-        SendImage(fileData);
         Texture2D tex = new(2, 2);
+        bool succesful = StorageContainerManager.Instance.UpdateContainerScreenshot(tex);
+        Debug.LogError("yo");
+        if(!succesful)
+            Debug.LogError("Could not store Screenshot, there was no active Storage");
+
+        SendImage(fileData);
 
         if (tex.LoadImage(fileData))
         {

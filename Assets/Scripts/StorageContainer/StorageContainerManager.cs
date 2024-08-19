@@ -11,6 +11,11 @@ public class Room
     public int RoomID;
     public List<StorageContainer> StorageContainers;
 
+    public Room()
+    {
+        StorageContainers = new List<StorageContainer>();
+    }
+    
     public void AddStorageContainer(StorageContainer storageContainer)
     {
         StorageContainers.Add(storageContainer);
@@ -32,7 +37,10 @@ public class StorageContainer
     public StorageContainer(int containerID, Texture2D texture2D)
     {
         Description = "";
-        ScreenshotData = texture2D.EncodeToJPG();
+       if(texture2D!=null) 
+            ScreenshotData = texture2D.EncodeToJPG();
+            else
+            ScreenshotData= null;
         ContainerID = containerID;
     }
 
@@ -41,6 +49,11 @@ public class StorageContainer
         Description = description;
         ScreenshotData = texture2D.EncodeToJPG();
         ContainerID = containerID;
+     }
+
+     public void UpdateTextureData(Texture2D texture2D)
+     {
+            ScreenshotData = texture2D.EncodeToJPG();
      }
 
     public Texture2D GetTexture2D()
@@ -57,7 +70,7 @@ public class StorageContainerManager : MonoBehaviour
 
     int _roomID;
     List<StorageContainer> _storageContainers = new List<StorageContainer>();
-    public Room room;
+    public Room room = new Room();
 
     private string _filePath;
     private string _folderPath = "/Rooms";
@@ -81,9 +94,10 @@ public class StorageContainerManager : MonoBehaviour
     void Start()
     {
         _filePath = Path.Combine(Application.persistentDataPath, _folderPath);
-        LoadRoomData();
+        room = LoadRoomData();
 
         StartSetupPhase();
+
     }
 
     public void StartSetupPhase()
@@ -98,14 +112,33 @@ public class StorageContainerManager : MonoBehaviour
         IsInSetupPhase=false;
     }
 
-    public bool UpdateContainerScreenshot()
+    public void CreateStorageContainer()
+    {
+        StorageContainer newStorageContainer = new StorageContainer(activeContainer.GetContainerID(), null);
+        room.AddStorageContainer(newStorageContainer);
+    }
+
+
+    public bool UpdateContainerScreenshot(Texture2D texture)
     {
         if(activeContainer == null)
         return false;
 
-        activeContainer.GetInstanceID();
-        //try to find container in list, if present update screenshot, if not create
+        int id = activeContainer.GetInstanceID();
+        StorageContainer storageToUpdate = room.StorageContainers.Find(storage => storage.ContainerID == id);
+        storageToUpdate.UpdateTextureData(texture);
         return true;
+    }
+
+    public StorageContainer GetStorageContainerData(int containerID)
+    {
+        if(room.StorageContainers == null)
+        {
+            Debug.LogError("Storage Containers null");
+            return null;
+        }
+
+        return room.StorageContainers.Find(storage => storage.ContainerID == containerID);
     }
 
 
