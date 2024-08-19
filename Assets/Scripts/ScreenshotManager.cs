@@ -1,21 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using UnityEngine.Android;
+using UnityEngine.UI;
 
 public class ScreenshotManager : MonoBehaviour
 {
     
     [HideInInspector] public Texture2D cachedTexture;
 
-     [SerializeField] private bool deleteAfterProcessing;
+    [SerializeField] private bool deleteAfterProcessing;
+
+    [SerializeField] private ScreenshotSender _screenshotSender;
 
     private readonly string path = "/storage/emulated/0/Oculus/Screenshots/";
-   // private FileSystemWatcher fileSystemWatcher;
+    private FileSystemWatcher fileSystemWatcher;
     private readonly Queue<string> imageQueue = new();
 
+    // Get the path to the persistent data directory
+    string persistentDataPath;
 
 
-     private void Awake()
+
+    private void Awake()
     {
         if (Application.isEditor)
         {
@@ -31,7 +39,15 @@ public class ScreenshotManager : MonoBehaviour
             {
                 InitializeFileSystemWatcher();
             }
+
+            if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
+            {
+                Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+            }
         }
+
+
+        persistentDataPath = Application.persistentDataPath;
     }
 
     private void OnDestroy()
@@ -47,8 +63,6 @@ public class ScreenshotManager : MonoBehaviour
         emptyTexture.SetPixels(new[] { Color.clear, Color.clear, Color.clear, Color.clear });
         emptyTexture.Apply();
         cachedTexture = emptyTexture;
-        displayImage.sprite = Sprite.Create(emptyTexture, new Rect(0, 0, emptyTexture.width, emptyTexture.height), new Vector2(0.5f, 0.5f));
-        openAIConnector.GetVoiceCommand();
     }
 
     private void OnApplicationFocus(bool hasFocus)
@@ -70,6 +84,8 @@ public class ScreenshotManager : MonoBehaviour
             Filter = "*.jpg",
             NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastWrite
         };
+
+        Debug.LogWarning("fileSystemWatcherCreateD");
 
         fileSystemWatcher.Created += OnNewImageCreated;
         fileSystemWatcher.EnableRaisingEvents = true;
@@ -107,18 +123,17 @@ public class ScreenshotManager : MonoBehaviour
     private IEnumerator ProcessNewImage(string imagePath)
     {
         var fileData = File.ReadAllBytes(imagePath);
+        SendImage(fileData);
         Texture2D tex = new(2, 2);
 
         if (tex.LoadImage(fileData))
         {
-            StartCoroutine(FadeImage(tex));
-            cachedTexture = tex;
-            if (startVoiceExperienceAfterImage)
-            {
-                openAIConnector.GetVoiceCommand();
-            }
-            FindObjectOfType<ImageGalleryManager>().AddNewImage(imagePath);
 
+            //TODO not only send image but also storage ID and session ID
+            // _screenshotSender?.SendImageToBackend(tex);
+            StoreImage(tex);
+
+            cachedTexture = tex;
             if (deleteAfterProcessing)
             {
                 DeleteImage(imagePath);
@@ -130,6 +145,11 @@ public class ScreenshotManager : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    private void SendImage(byte[] fileData)
+    {
+
     }
 
     private void DeleteImage(string imagePath)
@@ -177,6 +197,24 @@ public class ScreenshotManager : MonoBehaviour
         {
             Debug.LogWarning($"File not found: {imagePath}");
         }
+    }
+
+    void StoreImage(Texture2D tex)
+    {
+        byte[] imageBytes = tex.EncodeToJPG(); 
+
+        // Specify the file name
+        string fileName = "MyImage.jpg"; // Use Storage Container ID as name to reallocate
+
+        string folder = "/ourImages";
+        // Combine the path and file name
+        string filePath = System.IO.Path.Combine(path+folder, fileName);
+
+        // Write the image bytes to the file
+        File.WriteAllBytes(filePath, imageBytes);
+
+        // Optionally, you can log the path to check where the file was saved
+        Debug.LogWarning($"Image saved to: {filePath}");
     }
 
 
