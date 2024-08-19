@@ -51,7 +51,20 @@ public class WebRequester : MonoBehaviour
 
     private void Start()
     {
-      //  CallHelloWorld();
+         // Current time
+        DateTime currentTime = DateTime.UtcNow;
+        
+        // Unix epoch time (January 1, 1970)
+        DateTime unixEpoch = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
+        // Calculate the difference
+        TimeSpan timeDifference = currentTime - unixEpoch;
+
+        // Get the total seconds
+        double secondsSince2024 = timeDifference.TotalSeconds;
+
+        sessionId = secondsSince2024.ToString();
+
     }
 
 
@@ -62,7 +75,7 @@ public class WebRequester : MonoBehaviour
         string base64String = Convert.ToBase64String(storageContainer.ScreenshotData);
 
         StartCoroutine(CaptureStorageUnitFromImage(storageContainer.ContainerID.ToString(), base64String, 
-                storageContainer.Description, 1234.ToString()));
+                storageContainer.Description, sessionId.ToString()));
     }
 
     IEnumerator SendChatMessage(string _message)

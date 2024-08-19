@@ -14,6 +14,7 @@ public class ActivateStorageObject : MonoBehaviour
         _storageObject.SetActive(true);
         _anchorObject.SetActive(false);
 
-        this.transform.rotation = Quaternion.Euler(0, this.transform.rotation.eulerAngles.y, 0);
+        //not working, for whatever reason
+       // this.transform.rotation = Quaternion.Euler(0, this.transform.rotation.eulerAngles.y, 0);
     }
 }

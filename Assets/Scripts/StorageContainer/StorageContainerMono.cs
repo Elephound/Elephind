@@ -59,12 +59,14 @@ public class StorageContainerMono : MonoBehaviour
 
 
         UpdateUIContent();
+        
     }
 
 
     void OnEnable()
     {
         StorageContainerManager.Instance.SetupPhaseChanged.AddListener(ToggleCollider);
+        StorageContainerManager.Instance.RegisterStorageContainerMono(this);
      
     }
 
