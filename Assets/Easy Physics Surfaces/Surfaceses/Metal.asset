@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d32acff58b686d4d80b6c34fbc226e6, type: 3}
+  m_Name: Metal
+  m_EditorClassIdentifier: 
+  HeavyStepThreshold: 0.7
+  Footsteps:
+  - {fileID: 8300000, guid: 00a8ef9ae38663c45a857a3a8b15eaae, type: 3}
+  - {fileID: 8300000, guid: 73fe8a77e58c9164eb228a6fbc055ec2, type: 3}
+  - {fileID: 8300000, guid: e783fd87210133d4e985699692a07b0d, type: 3}
+  - {fileID: 8300000, guid: ee40f9118f829bc41bb22f65710d230d, type: 3}
+  - {fileID: 8300000, guid: 23bdea36ddedc8b4981b1ddadea66f5b, type: 3}
+  - {fileID: 8300000, guid: 76c44f6770552b84f81d4d0bcb507416, type: 3}
+  - {fileID: 8300000, guid: 66d57602f8e2f064cb8d6114a90357ec, type: 3}
+  - {fileID: 8300000, guid: 7fcf1b20d42fd9a4a90b4ca1192a258b, type: 3}
+  HeavyFootsteps:
+  - {fileID: 8300000, guid: 9074f67da4c2f3449a581f7c39387546, type: 3}
+  - {fileID: 8300000, guid: f136b5c5e0b438f4cb9aba3d4c4fec8c, type: 3}
+  - {fileID: 8300000, guid: 3819a98917766fe468023b223c705982, type: 3}
+  - {fileID: 8300000, guid: c9a8a14dda8ee454da034c778176d7e8, type: 3}
+  - {fileID: 8300000, guid: ca8dae05945fa4e459182bf4cf6cbabb, type: 3}
+  - {fileID: 8300000, guid: 5c1a0308ff93a6742be25f5370d3e024, type: 3}
+  - {fileID: 8300000, guid: 2c794e6a5c683d746a7dccb2db297837, type: 3}
+  - {fileID: 8300000, guid: 899e473bea51fe344b26b605a45d2d5d, type: 3}
+  MediumImpactThreshold: 0.7
+  HeavyImpactThreshold: 1.5
+  LightImpact: []
+  MediumImpact:
+  - {fileID: 8300000, guid: c29b7706d994cbc4191992c9ea380a08, type: 3}
+  - {fileID: 8300000, guid: 32600b1d1da7400479372a264ac42628, type: 3}
+  HeavyImpact: []
