@@ -94,8 +94,7 @@ public class StorageContainerManager : MonoBehaviour
     void Start()
     {
         _filePath = Path.Combine(Application.persistentDataPath, _folderPath);
-        room = LoadRoomData();
-
+        room = new Room(); //LoadRoomData();
 
     }
 
@@ -122,6 +121,7 @@ public class StorageContainerManager : MonoBehaviour
     public void CreateStorageContainer()
     {
         StorageContainer newStorageContainer = new StorageContainer(activeContainer.GetContainerID(), null);
+        Debug.LogWarning("Adding " +activeContainer.GetContainerID() );
         room.AddStorageContainer(newStorageContainer);
     }
 
@@ -134,9 +134,15 @@ public class StorageContainerManager : MonoBehaviour
             return false;
         }
 
-        Debug.LogWarning("Updating Screenshot");
-        int id = activeContainer.GetInstanceID();
+        int id = activeContainer.GetContainerID();
+        Debug.LogWarning("ID found " + id);
+
+        Debug.LogWarning( "room numer of storageContainers" + room.StorageContainers.Count);
         StorageContainer storageToUpdate = room.StorageContainers.Find(storage => storage.ContainerID == id);
+        if(storageToUpdate == null)
+        {Debug.LogError("StorageToUpdate is null");
+        return false;
+        }
         storageToUpdate.UpdateTextureData(texture);
 
         SendToBackend(storageToUpdate);

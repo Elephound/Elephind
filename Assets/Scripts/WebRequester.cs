@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
-using UnityEngine.UI;
+using System;
 using TMPro;
 using Newtonsoft.Json;
 //using UnityEngine.UIElements;
@@ -53,7 +53,8 @@ public class WebRequester : MonoBehaviour
 
     public void SendStorageUnit(StorageContainer storageContainer)
     {
-        StartCoroutine(CaptureStorageUnitFromImage(storageContainer.ContainerID.ToString(), storageContainer.ScreenshotData.ToString(), 
+        string base64String = Convert.ToBase64String(storageContainer.ScreenshotData);
+        StartCoroutine(CaptureStorageUnitFromImage(storageContainer.ContainerID.ToString(), base64String, 
                 storageContainer.Description, StorageContainerManager.Instance.room.RoomID.ToString()));
     }
 

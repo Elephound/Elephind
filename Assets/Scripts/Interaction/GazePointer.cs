@@ -64,8 +64,6 @@ public class GazePointer : MonoBehaviour
 
     void RefreshHit(StorageContainerMono storageContainerMono)
     {
-        Debug.Log("Hit");
-
         StorageContainerHit storageContainerHit = storageContainerHits.Find(item => item.StorageContainerMono == storageContainerMono);
         if (storageContainerHit == null)
             storageContainerHits.Add(new StorageContainerHit(storageContainerMono, _maxLifeTickTime));
@@ -78,7 +76,7 @@ public class GazePointer : MonoBehaviour
     void Update()
     {
         if(StorageContainerManager.Instance.IsInSetupPhase)
-        return;
+            return;
 
 
         ShootRay();
@@ -104,19 +102,16 @@ public class GazePointer : MonoBehaviour
 
         if (distance <= _firstStageDistance && distance <= _secondStageDistance)
         {
-            Debug.LogWarning("First Stage UI");
             storageContainerHit.StorageContainerMono.SetFirstStageUIActive(true);
             storageContainerHit.StorageContainerMono.SetSecondStageUIActive(true);
         }
         else if (distance <= _firstStageDistance && distance > _secondStageDistance)
         {
-            Debug.LogWarning("Second Stage UI");
             storageContainerHit.StorageContainerMono.SetFirstStageUIActive(true);
             storageContainerHit.StorageContainerMono.SetSecondStageUIActive(false);
         }
         else
         {
-            Debug.LogWarning("UI Off");
             storageContainerHit.StorageContainerMono.SetFirstStageUIActive(false);
             storageContainerHit.StorageContainerMono.SetSecondStageUIActive(false);
         }
