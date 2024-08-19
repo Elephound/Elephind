@@ -281,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 789684486510353890, guid: a10f1288b64e6e645968db95e7d908ca,
         type: 3}
       propertyPath: m_Name
-      value: DemoAnchorPlacementBuildingBlock Variant
+      value: DemoAnchorPlacementBuildingBlock StorageVariant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
