@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+//using UnityEngine.UIElements;
 
 public class WebRequester : MonoBehaviour
 {
     // Konstante für den "HelloWorld" Endpoint
     private const string ENDPOINT_HELLOWORLD = "/api/helloworld";
+    private const string ENDPOINT_COMPLETION = "/api/completion";
+    private const string ENDPOINT_STORAGEUNIT_FROMIMAGE = "/api/storageunit/fromimage"; 
+
 
     [SerializeField] private string baseWebAddress; // https://elephound-backend-git-preview-mario-deutschmanns-projects.vercel.app
-                                                    // /api/helloworld
+                                                    
     [SerializeField] private string sessionId;
 
     // Dictionary to store header key-value pairs
@@ -22,15 +28,93 @@ public class WebRequester : MonoBehaviour
         public string value;
     }
 
+    // UI Elemente
+    [SerializeField] private TMPro.TMP_InputField inputField;  // TextArea für die Eingabe
+    [SerializeField] private Button sendButton;      // Button zum Absenden
+    [SerializeField] private TMP_Text resultTextPanel;   // TextPanel für das Ergebnis
+
     private void Start()
     {
-        Debug.Log("Start: Fuck (- where is) the hammer?!");
-        StartCoroutine(GetRequest(baseWebAddress+ ENDPOINT_HELLOWORLD));
+        CallHelloWorld();
     }
 
-    public void TestCall()
+    public void OnSendButtonClicked()
     {
-        GetRequest(baseWebAddress);
+        // Text aus der Eingabe holen und senden
+        string userInput = inputField.text;
+        Debug.Log("input text:" +  userInput);
+        StartCoroutine(SendChatMessage(userInput));
+    }
+
+    public void OnCaptureImageButtonClicked()
+    {
+        // Text aus der Eingabe holen und senden
+        string userInput = inputField.text;
+        Debug.Log("input text:" + userInput);
+
+        string storageUnitId = "123123";
+        string imageBase64Encoded = "";
+        string storageUnitName = userInput;
+
+        StartCoroutine(CaptureStorageUnitFromImage(storageUnitId, imageBase64Encoded, storageUnitName));
+    }
+
+    IEnumerator SendChatMessage(string _message)
+    {
+        // Create a JSON object with the message
+        string jsonMessage = $"{{ \"message\": \"{_message}\" }}";
+        Debug.Log(JsonUtility.ToJson(_message));
+        Debug.Log("jsonMessage: "+ jsonMessage);
+
+        using (UnityWebRequest www = UnityWebRequest.Post(baseWebAddress + ENDPOINT_COMPLETION, jsonMessage, "application/json"))
+        {
+            AddHeaders(www); // Header hinzufügen
+
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(www.error);
+                resultTextPanel.text = "Error: " + www.error;
+            }
+            else
+            {
+                // Ergebnis im TextPanel anzeigen
+                resultTextPanel.text = "Server: " + www.downloadHandler.text;
+            }
+        }
+    }
+
+    IEnumerator CaptureStorageUnitFromImage(string _storageUnitId, string _imageBase64Encoded, string _storageUnitName)
+    {
+        // Create a JSON object with the message
+        string jsonMessage = $"{{ \"storageUnitId\": \"{_storageUnitId}\", \"storageUnitName\": \"{_storageUnitName}\", \"captureImage\": \"{_imageBase64Encoded}\" }}";
+        Debug.Log("jsonMessage: " + jsonMessage);
+
+        using (UnityWebRequest www = UnityWebRequest.Post(baseWebAddress + ENDPOINT_STORAGEUNIT_FROMIMAGE, jsonMessage, "application/json"))
+        {
+            AddHeaders(www); // Header hinzufügen
+
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(www.error);
+                resultTextPanel.text = "Error: " + www.error;
+            }
+            else
+            {
+                // Ergebnis im TextPanel anzeigen
+                resultTextPanel.text = "Server: " + www.downloadHandler.text;
+                Debug.Log("Server: " + www.downloadHandler.text);
+            }
+        }
+    }
+
+    public void CallHelloWorld()
+    {
+        Debug.Log("Start: Fuck (- where is) the hammer?!");
+        StartCoroutine(GetRequest(baseWebAddress + ENDPOINT_HELLOWORLD));
     }
 
 
@@ -90,6 +174,7 @@ public class WebRequester : MonoBehaviour
 
     private void AddHeaders(UnityWebRequest request)
     {
+        request.SetRequestHeader("sessionId", sessionId);
         foreach (Header header in headers)
         {
             request.SetRequestHeader(header.key, header.value);
