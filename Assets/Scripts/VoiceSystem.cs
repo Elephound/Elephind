@@ -80,7 +80,6 @@ public class VoiceSystem : MonoBehaviour
     {
         if (!_voiceCommandReady) return;
 
-        Debug.LogError("full Transcription");
         _voiceCommandReady = false;
         _transcriptionText = transcription;
         _completeTranscription?.Invoke(_transcriptionText);

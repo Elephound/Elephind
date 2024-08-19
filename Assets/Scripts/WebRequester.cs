@@ -99,8 +99,25 @@ public class WebRequester : MonoBehaviour
             }
             else
             {
-                // Ergebnis im TextPanel anzeigen
-                resultTextPanel.text = "Server: " + www.downloadHandler.text;
+                 // Ergebnis im TextPanel anzeigen
+                string jsonResponse = www.downloadHandler.text;
+                Debug.Log("Server: " + jsonResponse);
+
+                GenericResponse responseObject = JsonConvert.DeserializeObject<GenericResponse>(jsonResponse);
+                resultTextPanel.text = responseObject.chat_response;
+
+
+            //TODO DEBUG FOREACH
+                foreach (StorageUnit su in responseObject.storageunits)
+                {
+                    resultTextPanel.text += "\n " + su.name + " (" + su.items.Count + " - ID:"+su.id+", "+su.description+")";
+                    foreach(Item item in su.items)
+                    {
+                        resultTextPanel.text += "\n - " + item.name + " (" + item.quantity + ", "+item.description+", "+item.category+")";
+                    }
+                }
+        
+                RequestCompleted.Invoke(responseObject);
             }
         }
     }
