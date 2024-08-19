@@ -15,7 +15,7 @@ public class Room
     {
         StorageContainers = new List<StorageContainer>();
     }
-    
+
     public void AddStorageContainer(StorageContainer storageContainer)
     {
         StorageContainers.Add(storageContainer);
@@ -84,7 +84,7 @@ public class StorageContainerManager : MonoBehaviour
     public UnityEvent<bool> SetupPhaseChanged;
 
 
-    void Awake()
+    void Awake()    
     {
         if(Instance == null)
             Instance = this;
@@ -96,8 +96,15 @@ public class StorageContainerManager : MonoBehaviour
         _filePath = Path.Combine(Application.persistentDataPath, _folderPath);
         room = LoadRoomData();
 
-        StartSetupPhase();
 
+    }
+
+    public void ToggleSetupPhase()
+    {
+        if(IsInSetupPhase)
+            EndSetupPhase();
+        else
+            StartSetupPhase();
     }
 
     public void StartSetupPhase()
@@ -122,12 +129,23 @@ public class StorageContainerManager : MonoBehaviour
     public bool UpdateContainerScreenshot(Texture2D texture)
     {
         if(activeContainer == null)
-        return false;
+        {
+            Debug.LogError("no active Container");
+            return false;
+        }
 
+        Debug.LogWarning("Updating Screenshot");
         int id = activeContainer.GetInstanceID();
         StorageContainer storageToUpdate = room.StorageContainers.Find(storage => storage.ContainerID == id);
         storageToUpdate.UpdateTextureData(texture);
+
+        SendToBackend(storageToUpdate);
         return true;
+    }
+
+    void SendToBackend(StorageContainer storageToUpdate)
+    {
+        WebRequester.Instance.SendStorageUnit(storageToUpdate);
     }
 
     public StorageContainer GetStorageContainerData(int containerID)
@@ -172,13 +190,18 @@ public class StorageContainerManager : MonoBehaviour
         if(activeContainer == null)
         {
             activeContainer = containerMono;
+            containerMono.SetContainerActiveVisual(true);
             return;
         }
+
+        activeContainer.SetContainerActiveVisual(false);
 
         if(activeContainer == containerMono)
             activeContainer = null;
         else
             activeContainer = containerMono;
+
+        containerMono.SetContainerActiveVisual(true);
 
     }
 

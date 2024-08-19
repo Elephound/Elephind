@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Meta.XR.Editor.Tags;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 
 public class StorageContainerHit
@@ -34,7 +31,6 @@ public class GazePointer : MonoBehaviour
 {
 
     [SerializeField] float _rayDistance;
-    StorageContainerMono lastHit;
 
     [SerializeField] float StartingLifeTime;
     [SerializeField] float _maxLifeTickTime;
@@ -47,10 +43,10 @@ public class GazePointer : MonoBehaviour
     List<StorageContainerHit> deleteList = new List<StorageContainerHit>();
 
 
-
-
     void ShootRay()
     {
+
+        Debug.DrawRay(transform.position, transform.forward*_rayDistance, Color.green);
         Ray ray = new Ray(transform.position, transform.forward); // Create a ray from the camera based on the mouse position
         RaycastHit hit; // Variable to store information about the raycast hit
 
@@ -62,13 +58,14 @@ public class GazePointer : MonoBehaviour
         }
         else
         {
-            Debug.Log("No hit detected");
         }
 
     }
 
     void RefreshHit(StorageContainerMono storageContainerMono)
     {
+        Debug.Log("Hit");
+
         StorageContainerHit storageContainerHit = storageContainerHits.Find(item => item.StorageContainerMono == storageContainerMono);
         if (storageContainerHit == null)
             storageContainerHits.Add(new StorageContainerHit(storageContainerMono, _maxLifeTickTime));
@@ -80,6 +77,12 @@ public class GazePointer : MonoBehaviour
 
     void Update()
     {
+        if(StorageContainerManager.Instance.IsInSetupPhase)
+        return;
+
+
+        ShootRay();
+
         foreach (StorageContainerHit storageContainerHit in storageContainerHits)
         {
             if (!storageContainerHit.UpdateLife(-Time.deltaTime, _maxLifeTickTime))
@@ -101,16 +104,19 @@ public class GazePointer : MonoBehaviour
 
         if (distance <= _firstStageDistance && distance <= _secondStageDistance)
         {
+            Debug.LogWarning("First Stage UI");
             storageContainerHit.StorageContainerMono.SetFirstStageUIActive(true);
             storageContainerHit.StorageContainerMono.SetSecondStageUIActive(true);
         }
         else if (distance <= _firstStageDistance && distance > _secondStageDistance)
         {
+            Debug.LogWarning("Second Stage UI");
             storageContainerHit.StorageContainerMono.SetFirstStageUIActive(true);
             storageContainerHit.StorageContainerMono.SetSecondStageUIActive(false);
         }
         else
         {
+            Debug.LogWarning("UI Off");
             storageContainerHit.StorageContainerMono.SetFirstStageUIActive(false);
             storageContainerHit.StorageContainerMono.SetSecondStageUIActive(false);
         }

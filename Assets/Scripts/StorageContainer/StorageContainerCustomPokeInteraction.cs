@@ -12,6 +12,9 @@ public class StorageContainerCustomPokeInteraction : MonoBehaviour
         if(!collider.GetComponent<HandTag>())
         return;
 
+        if(!StorageContainerManager.Instance.IsInSetupPhase)
+            return;
+
         UpdateContainer();
     }
 

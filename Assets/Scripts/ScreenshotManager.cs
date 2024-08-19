@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.Android;
 using UnityEngine.UI;
+using JetBrains.Annotations;
 
 public class ScreenshotManager : MonoBehaviour
 {
@@ -20,7 +21,6 @@ public class ScreenshotManager : MonoBehaviour
 
     // Get the path to the persistent data directory
     string persistentDataPath;
-
 
 
     private void Awake()
@@ -126,11 +126,10 @@ public class ScreenshotManager : MonoBehaviour
         var fileData = File.ReadAllBytes(imagePath);
         Texture2D tex = new(2, 2);
         bool succesful = StorageContainerManager.Instance.UpdateContainerScreenshot(tex);
-        Debug.LogError("yo");
         if(!succesful)
             Debug.LogError("Could not store Screenshot, there was no active Storage");
 
-        SendImage(fileData);
+      
 
         if (tex.LoadImage(fileData))
         {

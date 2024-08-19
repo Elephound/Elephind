@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using Meta.WitAi.CallbackHandlers;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 
 public class StorageContainerMono : MonoBehaviour
 {
 
     //to be set when creating container
-    [SerializeField] int _containerID;
+    private OVRSpatialAnchor _ownSpatialAnchor;
+
+
+    private int _containerID;
+
     [SerializeField] Renderer _renderer;
     [SerializeField] Material _normalMaterial;
     [SerializeField] Material _activeMaterial;
@@ -27,6 +31,22 @@ public class StorageContainerMono : MonoBehaviour
       [SerializeField] Image _containerImage;
 
     public bool IsActivated;
+
+    void Awake()
+    {
+        _ownSpatialAnchor = this.transform.GetComponentInParent<OVRSpatialAnchor>();
+        if(_ownSpatialAnchor == null) 
+            Debug.LogError("spawned but didnt find own anchor");
+        _containerID = GuidToInt(_ownSpatialAnchor.Uuid);
+    }
+
+    static int GuidToInt(Guid guid)
+    {
+        byte[] bytes = guid.ToByteArray();
+        // Take the first 4 bytes to create an integer
+        int result = BitConverter.ToInt32(bytes, 0);
+        return result;
+    }
 
 
     void Start()
@@ -70,7 +90,6 @@ public class StorageContainerMono : MonoBehaviour
         if(value == true)
             StorageContainerManager.Instance.SetContainerAsActive(this);
         IsActivated = value;
-        SetContainerActiveVisual(value);
     }
 
     public void SetContainerActiveVisual(bool value)
