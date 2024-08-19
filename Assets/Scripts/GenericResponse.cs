@@ -5,11 +5,20 @@ using UnityEngine; // Use this if you're working in Unity
 [System.Serializable]
 public class GenericResponse
 {
-    public string chat_response;
-    public string response_code; // storageunit_added, itemsearch_finished
-    public string input_text; // Optional field
-    public string input_prompt; // Optional field
-    public List<StorageUnit> storageunits;
+    public string chat_response;            // Corresponds to chat_response: string
+    public ResponseCode response_code;      // Corresponds to response_code: "OK" | "ERROR" | "SEARCH_RESULT" | "CAPTURE_RESULT"
+    public string input_text;               // Corresponds to input_text?: string (Optional)
+    public string input_prompt;             // Corresponds to input_prompt?: string (Optional)
+    public List<StorageUnit> storageunits;  // Corresponds to storageunits: StorageUnit[]
+}
+
+// Enum to represent the specific values for response_code
+public enum ResponseCode
+{
+    OK,
+    ERROR,
+    SEARCH_RESULT,
+    CAPTURE_RESULT
 }
 
 [System.Serializable]
@@ -28,5 +37,5 @@ public class Item
     public string description;              // Optional
     public string ean;                      // Optional
     public string category;                 // Optional
-    public int quantity;                   // Optional: Nullable int
+    public int? quantity;                   // Optional: Nullable int
 }
