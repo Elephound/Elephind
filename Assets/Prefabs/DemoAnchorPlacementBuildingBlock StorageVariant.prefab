@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 364906774042950986, guid: a10f1288b64e6e645968db95e7d908ca,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 789684486510353798, guid: a10f1288b64e6e645968db95e7d908ca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -63,7 +68,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoAnchorPlacementBuildingBlock StorageVariant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1482648116244080294, guid: a10f1288b64e6e645968db95e7d908ca,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.828
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681909412483105808, guid: a10f1288b64e6e645968db95e7d908ca,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989186928725966915, guid: a10f1288b64e6e645968db95e7d908ca,
+        type: 3}
+      propertyPath: _renderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8549506598522398789, guid: a10f1288b64e6e645968db95e7d908ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5458931709000312035, guid: a10f1288b64e6e645968db95e7d908ca, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

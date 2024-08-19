@@ -14,22 +14,18 @@ public class ResponseManager : MonoBehaviour
 
     void DecodeGenericResponse(GenericResponse response)
     {
-        Debug.LogWarning("response ");
         switch(response.response_code)
         {
             case ResponseCode.OK:
-            Debug.LogWarning("ok ");
                   VoiceSystem.Instance.SpeakText(response.chat_response);
             break;
 
             case ResponseCode.CAPTURE_RESULT:
-            Debug.LogWarning("search ");
                 VoiceSystem.Instance.SpeakText(response.chat_response);
                 ForwardResponseData(response.storageunits);
             break;
 
             case ResponseCode.SEARCH_RESULT:
-            Debug.LogWarning("cap ");
                 VoiceSystem.Instance.SpeakText(response.chat_response);
                 ShowContainersWithItem(response.storageunits);
             break;
@@ -54,7 +50,6 @@ public class ResponseManager : MonoBehaviour
 
     void ShowContainersWithItem(List<StorageUnit> storageUnits)
     {
-        Debug.LogWarning("Show Containers");
         List<int> ids = new List<int>();
 
         foreach(StorageUnit storageUnit in storageUnits)
