@@ -43,8 +43,6 @@ public class GazePointer : MonoBehaviour
     List<StorageContainerHit> deleteList = new List<StorageContainerHit>();
 
 
-
-
     void ShootRay()
     {
         Ray ray = new Ray(transform.position, transform.forward); // Create a ray from the camera based on the mouse position
@@ -76,6 +74,12 @@ public class GazePointer : MonoBehaviour
 
     void Update()
     {
+        if(StorageContainerManager.Instance.IsInSetupPhase)
+        return;
+
+
+        ShootRay();
+
         foreach (StorageContainerHit storageContainerHit in storageContainerHits)
         {
             if (!storageContainerHit.UpdateLife(-Time.deltaTime, _maxLifeTickTime))
