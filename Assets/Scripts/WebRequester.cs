@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Newtonsoft.Json;
 //using UnityEngine.UIElements;
 
 public class WebRequester : MonoBehaviour
@@ -69,7 +70,7 @@ public class WebRequester : MonoBehaviour
             Debug.Log("Webcam is null");
         }
 
-        StartCoroutine(CaptureStorageUnitFromImage(storageUnitId, imageBase64Encoded, storageUnitName));
+        StartCoroutine(CaptureStorageUnitFromImage(storageUnitId, imageBase64Encoded, storageUnitName, sessionId));
     }
 
     IEnumerator SendChatMessage(string _message)
@@ -98,10 +99,10 @@ public class WebRequester : MonoBehaviour
         }
     }
 
-    IEnumerator CaptureStorageUnitFromImage(string _storageUnitId, string _imageBase64Encoded, string _storageUnitName)
+    IEnumerator CaptureStorageUnitFromImage(string _storageUnitId, string _imageBase64Encoded, string _storageUnitName, string _sessionId)
     {
         // Create a JSON object with the message
-        string jsonMessage = $"{{ \"storageUnitId\": \"{_storageUnitId}\", \"storageUnitName\": \"{_storageUnitName}\", \"captureImage\": \"{_imageBase64Encoded}\" }}";
+        string jsonMessage = $"{{ \"storageUnitId\": \"{_storageUnitId}\", \"sessionId\": \"{_sessionId}\", \"storageUnitName\": \"{_storageUnitName}\", \"captureImage\": \"{_imageBase64Encoded}\" }}";
         Debug.Log("jsonMessage: " + jsonMessage);
 
         using (UnityWebRequest www = UnityWebRequest.Post(baseWebAddress + ENDPOINT_STORAGEUNIT_FROMIMAGE, jsonMessage, "application/json"))
@@ -119,10 +120,21 @@ public class WebRequester : MonoBehaviour
             {
                 // Ergebnis im TextPanel anzeigen
                 string jsonResponse = www.downloadHandler.text;
-                resultTextPanel.text = "Server: " + jsonResponse;
                 Debug.Log("Server: " + jsonResponse);
 
-                GenericResponse responseObject = JsonUtility.FromJson<GenericResponse>(jsonResponse);
+                GenericResponse responseObject = JsonConvert.DeserializeObject<GenericResponse>(jsonResponse);
+                resultTextPanel.text = responseObject.chat_response;
+                
+
+                foreach (StorageUnit su in responseObject.storageunits)
+                {
+                    resultTextPanel.text += "\n " + su.name + " (" + su.items.Count + " - ID:"+su.id+", "+su.description+")";
+                    foreach(Item item in su.items)
+                    {
+                        resultTextPanel.text += "\n - " + item.name + " (" + item.quantity + ", "+item.description+", "+item.category+")";
+                    }
+                }
+
                 Debug.Log(responseObject);
 
             }

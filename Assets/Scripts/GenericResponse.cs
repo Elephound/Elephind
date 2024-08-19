@@ -28,5 +28,5 @@ public class Item
     public string description;              // Optional
     public string ean;                      // Optional
     public string category;                 // Optional
-    public int? quantity;                   // Optional: Nullable int
+    public int quantity;                   // Optional: Nullable int
 }

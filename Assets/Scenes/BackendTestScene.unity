@@ -2331,8 +2331,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayImage: {fileID: 1274580352}
-  screenshotWidth: 1920
-  screenshotHeight: 1080
+  screenshotWidth: 512
+  screenshotHeight: 512
 --- !u!4 &955715982
 Transform:
   m_ObjectHideFlags: 0
