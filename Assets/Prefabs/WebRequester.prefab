@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5335594767417805128}
   - component: {fileID: 9015618635317537333}
   - component: {fileID: 7814529796875721213}
+  - component: {fileID: 2612562876179054720}
   m_Layer: 0
   m_Name: WebRequester
   m_TagString: Untagged
@@ -58,7 +59,8 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 8300000, guid: 08c3f8e8283d6b94880e22280a446d1b,
+            type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -165,3 +167,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2612562876179054720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8921597032668796585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96044b45a9747245b3a58faac107e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

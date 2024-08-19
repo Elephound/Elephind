@@ -40,13 +40,15 @@ public class VoiceSystem : MonoBehaviour
         if(Instance == null)
             Instance = this;
 
-        _appVoiceExperience.VoiceEvents.OnRequestCompleted.AddListener(ReactivateVoice);
+        //_appVoiceExperience.VoiceEvents.OnRequestCompleted.AddListener(ReactivateVoice);
         _appVoiceExperience.VoiceEvents.OnPartialTranscription.AddListener(OnPartialTranscription);
         _appVoiceExperience.VoiceEvents.OnFullTranscription.AddListener(OnFullTranscription);
 
         StartCoroutine(ActivateDelayed());
 
         DEBUGOBJECT.SetActive (false);
+        SpeakText("Hi, i'm Elli. Ask me anything!");
+
     }
 
 
@@ -54,9 +56,7 @@ public class VoiceSystem : MonoBehaviour
     IEnumerator ActivateDelayed()
     {
         yield return new WaitForSeconds(2);
-        _appVoiceExperience.Activate();
-
-        SpeakText("Hi, i'm Elli. Ask me anything!");
+        //_appVoiceExperience.Activate();
     }
 
     private void ReactivateVoice() => _appVoiceExperience.Activate();
@@ -85,7 +85,7 @@ public class VoiceSystem : MonoBehaviour
 
     private void OnDestroy()
     {
-        _appVoiceExperience.VoiceEvents.OnRequestCompleted.RemoveListener(ReactivateVoice);
+     //   _appVoiceExperience.VoiceEvents.OnRequestCompleted.RemoveListener(ReactivateVoice);
         _appVoiceExperience.VoiceEvents.OnPartialTranscription.RemoveListener(OnPartialTranscription);
         _appVoiceExperience.VoiceEvents.OnFullTranscription.RemoveListener(OnFullTranscription);
     }
