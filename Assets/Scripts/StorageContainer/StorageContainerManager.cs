@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -57,10 +56,19 @@ public class StorageContainerManager : MonoBehaviour
 
     int _roomID;
     List<StorageContainer> _storageContainers = new List<StorageContainer>();
-    Room room;
+    public Room room;
 
     private string _filePath;
-    private string _folderPath;
+    private string _folderPath = "/Rooms";
+
+    static public StorageContainerManager Instance;
+
+
+    void Awake()
+    {
+        if(Instance == null)
+            Instance = this;
+    }
 
 
     void Start()
