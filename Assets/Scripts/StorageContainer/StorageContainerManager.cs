@@ -84,7 +84,7 @@ public class StorageContainerManager : MonoBehaviour
     public UnityEvent<bool> SetupPhaseChanged;
 
 
-    void Awake()
+    void Awake()    
     {
         if(Instance == null)
             Instance = this;
@@ -129,12 +129,23 @@ public class StorageContainerManager : MonoBehaviour
     public bool UpdateContainerScreenshot(Texture2D texture)
     {
         if(activeContainer == null)
-        return false;
+        {
+            Debug.LogError("no active Container");
+            return false;
+        }
 
+        Debug.LogWarning("Updating Screenshot");
         int id = activeContainer.GetInstanceID();
         StorageContainer storageToUpdate = room.StorageContainers.Find(storage => storage.ContainerID == id);
         storageToUpdate.UpdateTextureData(texture);
+
+        SendToBackend(storageToUpdate);
         return true;
+    }
+
+    void SendToBackend(StorageContainer storageToUpdate)
+    {
+        WebRequester.Instance.SendStorageUnit(storageToUpdate);
     }
 
     public StorageContainer GetStorageContainerData(int containerID)

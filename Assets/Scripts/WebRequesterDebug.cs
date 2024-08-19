@@ -7,7 +7,7 @@ using TMPro;
 using Newtonsoft.Json;
 //using UnityEngine.UIElements;
 
-public class WebRequester : MonoBehaviour
+public class WebRequesterDebug : MonoBehaviour
 {
     // Konstante für den "HelloWorld" Endpoint
     private const string ENDPOINT_HELLOWORLD = "/api/helloworld";
@@ -19,6 +19,8 @@ public class WebRequester : MonoBehaviour
                                                     // http://localhost:3000
     [SerializeField] private string sessionId;
 
+    [SerializeField]
+    private WebcamScreenshotCapture webcamCaptureControl;
 
     // Dictionary to store header key-value pairs
     [SerializeField] private List<Header> headers = new List<Header>();//x-vercel-protection-bypass=UqndmmoWezkSatYYW3KDvkg3inolbmJg
@@ -31,25 +33,45 @@ public class WebRequester : MonoBehaviour
     }
 
     // UI Elemente
+    [SerializeField] private TMPro.TMP_InputField inputField; 
+    [SerializeField] private Button sendButton;      // Button zum Absenden
     [SerializeField] private TMP_Text resultTextPanel;   // TextPanel für das Ergebnis
-
-    static public WebRequester Instance;
-
-
-    void Awake()
-    {
-        if(Instance == null)
-            Instance = this;
-    }
-
+    [SerializeField] private TMPro.TMP_InputField storageUnitNameField; 
+    [SerializeField] private TMPro.TMP_InputField storageUnitIdField; 
 
     private void Start()
     {
-      //  CallHelloWorld();
+        CallHelloWorld();
     }
 
+    public void OnSendButtonClicked()
+    {
+        // Text aus der Eingabe holen und senden
+        string userInput = inputField.text;
+        Debug.Log("input text:" +  userInput);
+        StartCoroutine(SendChatMessage(userInput));
+    }
 
-   
+    public void OnCaptureImageButtonClicked()
+    {
+        // Text aus der Eingabe holen und senden
+        string userInput = inputField.text;
+        Debug.Log("input text:" + userInput);
+
+        string storageUnitId = (storageUnitIdField != null) ? storageUnitIdField.text : "123123";
+        string imageBase64Encoded = "";
+        string storageUnitName = (storageUnitNameField != null) ? storageUnitNameField.text : "123123";
+
+        if (webcamCaptureControl != null)
+        {
+            imageBase64Encoded = webcamCaptureControl.CaptureScreenshot();
+        } else
+        {
+            Debug.Log("Webcam is null");
+        }
+
+        StartCoroutine(CaptureStorageUnitFromImage(storageUnitId, imageBase64Encoded, storageUnitName, sessionId));
+    }
 
     public void SendStorageUnit(StorageContainer storageContainer)
     {
