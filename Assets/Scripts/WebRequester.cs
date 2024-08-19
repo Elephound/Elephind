@@ -15,8 +15,11 @@ public class WebRequester : MonoBehaviour
 
 
     [SerializeField] private string baseWebAddress; // https://elephound-backend-git-preview-mario-deutschmanns-projects.vercel.app
-                                                    
+                                                    // http://localhost:3000
     [SerializeField] private string sessionId;
+
+    [SerializeField]
+    private WebcamScreenshotCapture webcamCaptureControl;
 
     // Dictionary to store header key-value pairs
     [SerializeField] private List<Header> headers = new List<Header>();//x-vercel-protection-bypass=UqndmmoWezkSatYYW3KDvkg3inolbmJg
@@ -55,6 +58,14 @@ public class WebRequester : MonoBehaviour
         string storageUnitId = "123123";
         string imageBase64Encoded = "";
         string storageUnitName = userInput;
+
+        if (webcamCaptureControl != null)
+        {
+            imageBase64Encoded = webcamCaptureControl.CaptureScreenshot();
+        } else
+        {
+            Debug.Log("Webcam is null");
+        }
 
         StartCoroutine(CaptureStorageUnitFromImage(storageUnitId, imageBase64Encoded, storageUnitName));
     }
@@ -105,8 +116,13 @@ public class WebRequester : MonoBehaviour
             else
             {
                 // Ergebnis im TextPanel anzeigen
-                resultTextPanel.text = "Server: " + www.downloadHandler.text;
-                Debug.Log("Server: " + www.downloadHandler.text);
+                string jsonResponse = www.downloadHandler.text;
+                resultTextPanel.text = "Server: " + jsonResponse;
+                Debug.Log("Server: " + jsonResponse);
+
+                GenericResponse responseObject = JsonUtility.FromJson<GenericResponse>(jsonResponse);
+                Debug.Log(responseObject);
+
             }
         }
     }
