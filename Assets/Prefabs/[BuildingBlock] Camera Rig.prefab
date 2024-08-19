@@ -536,8 +536,8 @@ MonoBehaviour:
   _rayDistance: 5000
   StartingLifeTime: 5
   _maxLifeTickTime: 5
-  _firstStageDistance: 5
-  _secondStageDistance: 2
+  _firstStageDistance: 2
+  _secondStageDistance: 1
 --- !u!1 &2855624008917801194
 GameObject:
   m_ObjectHideFlags: 0

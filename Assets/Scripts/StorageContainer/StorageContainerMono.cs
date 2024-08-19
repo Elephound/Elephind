@@ -90,7 +90,6 @@ public class StorageContainerMono : MonoBehaviour
         if(value == true)
             StorageContainerManager.Instance.SetContainerAsActive(this);
         IsActivated = value;
-        SetContainerActiveVisual(value);
     }
 
     public void SetContainerActiveVisual(bool value)
