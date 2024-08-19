@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Meta.XR.Editor.Tags;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 
 public class StorageContainerHit
@@ -34,7 +31,6 @@ public class GazePointer : MonoBehaviour
 {
 
     [SerializeField] float _rayDistance;
-    StorageContainerMono lastHit;
 
     [SerializeField] float StartingLifeTime;
     [SerializeField] float _maxLifeTickTime;
@@ -101,16 +97,19 @@ public class GazePointer : MonoBehaviour
 
         if (distance <= _firstStageDistance && distance <= _secondStageDistance)
         {
+            Debug.LogWarning("First Stage UI");
             storageContainerHit.StorageContainerMono.SetFirstStageUIActive(true);
             storageContainerHit.StorageContainerMono.SetSecondStageUIActive(true);
         }
         else if (distance <= _firstStageDistance && distance > _secondStageDistance)
         {
+            Debug.LogWarning("Second Stage UI");
             storageContainerHit.StorageContainerMono.SetFirstStageUIActive(true);
             storageContainerHit.StorageContainerMono.SetSecondStageUIActive(false);
         }
         else
         {
+            Debug.LogWarning("UI Off");
             storageContainerHit.StorageContainerMono.SetFirstStageUIActive(false);
             storageContainerHit.StorageContainerMono.SetSecondStageUIActive(false);
         }

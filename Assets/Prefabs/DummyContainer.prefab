@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700d86c10069b8b4682fc23d49fcddfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _containerID: 1
+  _boundingBox: {fileID: 8768997684829296424}
   _renderer: {fileID: 2646739748128692201}
   _normalMaterial: {fileID: 2100000, guid: cc8747b3266f5c84c8b5c623c79db926, type: 2}
   _activeMaterial: {fileID: 2100000, guid: a24866f4e87cc694d89d0116390aa5e0, type: 2}
@@ -253,7 +253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8539013355139010258
 Transform:
   m_ObjectHideFlags: 0
