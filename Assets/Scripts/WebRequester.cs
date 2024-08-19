@@ -32,9 +32,11 @@ public class WebRequester : MonoBehaviour
     }
 
     // UI Elemente
-    [SerializeField] private TMPro.TMP_InputField inputField;  // TextArea für die Eingabe
+    [SerializeField] private TMPro.TMP_InputField inputField; 
     [SerializeField] private Button sendButton;      // Button zum Absenden
     [SerializeField] private TMP_Text resultTextPanel;   // TextPanel für das Ergebnis
+    [SerializeField] private TMPro.TMP_InputField storageUnitNameField; 
+    [SerializeField] private TMPro.TMP_InputField storageUnitIdField; 
 
     private void Start()
     {
@@ -55,9 +57,9 @@ public class WebRequester : MonoBehaviour
         string userInput = inputField.text;
         Debug.Log("input text:" + userInput);
 
-        string storageUnitId = "123123";
+        string storageUnitId = (storageUnitIdField != null) ? storageUnitIdField.text : "123123";
         string imageBase64Encoded = "";
-        string storageUnitName = userInput;
+        string storageUnitName = (storageUnitNameField != null) ? storageUnitNameField.text : "123123";
 
         if (webcamCaptureControl != null)
         {
