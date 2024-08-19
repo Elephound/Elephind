@@ -624,6 +624,7 @@ GameObject:
   - component: {fileID: 397605459}
   - component: {fileID: 397605458}
   - component: {fileID: 397605457}
+  - component: {fileID: 397605460}
   m_Layer: 0
   m_Name: '[BuildingBlock] Controller Buttons Mapper'
   m_TagString: Untagged
@@ -699,6 +700,18 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 397605460}
+          m_TargetAssemblyTypeName: DEBUG, Assembly-CSharp
+          m_MethodName: Log
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: DELETE
             m_BoolArgument: 0
           m_CallState: 2
   - Title: Toggle Setup Phase
@@ -788,6 +801,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &397605460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397605456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6ac7533005e7941b45a858de13229b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &595573543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,6 +1364,89 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1206315174
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5145226006762326241, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411962699455173808, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955616436980258586, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955616436980258586, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955616436980258586, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955616436980258586, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955616436980258586, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955616436980258586, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955616436980258586, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955616436980258586, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955616436980258586, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955616436980258586, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955616436980258686, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_Name
+      value: DemoAnchorPlacementBuildingBlock StorageVariant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8026185638798899158, guid: 026e6e0999edcab4ea5af6d64a9f4b6a,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 026e6e0999edcab4ea5af6d64a9f4b6a, type: 3}
 --- !u!1 &1223409333
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,3 +2157,4 @@ SceneRoots:
   - {fileID: 49603713}
   - {fileID: 1140983164}
   - {fileID: 612255838}
+  - {fileID: 1206315174}

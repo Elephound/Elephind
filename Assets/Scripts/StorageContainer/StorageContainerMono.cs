@@ -78,7 +78,7 @@ public class StorageContainerMono : MonoBehaviour
 
     void ToggleCollider(bool value)
     {
-        _ownCollider.gameObject.SetActive(value);
+        _ownCollider.enabled = value;
     }
     public void CreateContainer(int containerID)
     {
