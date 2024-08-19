@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 4046161446362401095}
   m_Layer: 0
   m_Name: DummyContainer
-  m_TagString: Untagged
+  m_TagString: StorageContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,7 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700d86c10069b8b4682fc23d49fcddfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boundingBox: {fileID: 8768997684829296424}
   _renderer: {fileID: 2646739748128692201}
   _normalMaterial: {fileID: 2100000, guid: cc8747b3266f5c84c8b5c623c79db926, type: 2}
   _activeMaterial: {fileID: 2100000, guid: a24866f4e87cc694d89d0116390aa5e0, type: 2}
@@ -264,7 +263,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1585967042887748884}

@@ -13,7 +13,6 @@ public class StorageContainerMono : MonoBehaviour
     //to be set when creating container
     private OVRSpatialAnchor _ownSpatialAnchor;
 
-    [SerializeField] GameObject _boundingBox;
 
     private int _containerID;
 
@@ -33,14 +32,12 @@ public class StorageContainerMono : MonoBehaviour
 
     public bool IsActivated;
 
-    void OnAwake()
+    void Awake()
     {
         _ownSpatialAnchor = this.transform.GetComponentInParent<OVRSpatialAnchor>();
         if(_ownSpatialAnchor == null) 
             Debug.LogError("spawned but didnt find own anchor");
         _containerID = GuidToInt(_ownSpatialAnchor.Uuid);
-
-        _boundingBox.SetActive(true);
     }
 
     static int GuidToInt(Guid guid)
