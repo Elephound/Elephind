@@ -50,6 +50,7 @@ public class ResponseManager : MonoBehaviour
 
     void ShowContainersWithItem(List<StorageUnit> storageUnits)
     {
+        Debug.LogWarning("Show Containers");
         List<int> ids = new List<int>();
 
         foreach(StorageUnit storageUnit in storageUnits)
@@ -59,7 +60,6 @@ public class ResponseManager : MonoBehaviour
 
         StorageContainerManager.Instance.HighlighSpecificContainer(ids);
 
-           
 
     }
 

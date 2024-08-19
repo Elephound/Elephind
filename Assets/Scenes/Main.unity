@@ -665,7 +665,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - Title: Load and spawn spatial anchors
-    Button: 2
+    Button: 8
     ButtonMode: 0
     Callback:
       m_PersistentCalls:
@@ -715,7 +715,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - Title: Toggle Setup Phase
-    Button: 8192
+    Button: 2
     ButtonMode: 0
     Callback:
       m_PersistentCalls:

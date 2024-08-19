@@ -46,7 +46,6 @@ public class GazePointer : MonoBehaviour
     void ShootRay()
     {
 
-        Debug.DrawRay(transform.position, transform.forward*_rayDistance, Color.green);
         Ray ray = new Ray(transform.position, transform.forward); // Create a ray from the camera based on the mouse position
         RaycastHit hit; // Variable to store information about the raycast hit
 
@@ -75,12 +74,6 @@ public class GazePointer : MonoBehaviour
 
     void Update()
     {
-        if(StorageContainerManager.Instance.IsInSetupPhase)
-            return;
-
-
-        ShootRay();
-
         foreach (StorageContainerHit storageContainerHit in storageContainerHits)
         {
             if (!storageContainerHit.UpdateLife(-Time.deltaTime, _maxLifeTickTime))
@@ -94,6 +87,12 @@ public class GazePointer : MonoBehaviour
         }
         deleteList.Clear();
 
+
+        if(StorageContainerManager.Instance.IsInSetupPhase)
+            return;
+
+
+        ShootRay();
     }
 
     void CalculateDistance(StorageContainerHit storageContainerHit)

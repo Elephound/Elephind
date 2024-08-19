@@ -66,8 +66,9 @@ public class VoiceSystem : MonoBehaviour
         Debug.LogWarning("Wake Word Detected");
         _voiceCommandReady = true;
         _wakeWordDetected.Invoke();
-        DEBUGOBJECT.SetActive (true);
+        DEBUGOBJECT.SetActive (true);   
     }
+
 
     void OnPartialTranscription(string transcription)
     {
@@ -78,6 +79,8 @@ public class VoiceSystem : MonoBehaviour
     void OnFullTranscription(string transcription)
     {
         if (!_voiceCommandReady) return;
+
+        Debug.LogError("full Transcription");
         _voiceCommandReady = false;
         _transcriptionText = transcription;
         _completeTranscription?.Invoke(_transcriptionText);
