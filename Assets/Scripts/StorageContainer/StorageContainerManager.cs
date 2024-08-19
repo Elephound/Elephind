@@ -79,6 +79,16 @@ public class StorageContainerManager : MonoBehaviour
         LoadRoomData();
     }
 
+    public bool UpdateContainerScreenshot()
+    {
+        if(activeContainer == null)
+        return false;
+
+        activeContainer.GetInstanceID();
+        //try to find container in list, if present update screenshot, if not create
+        return true;
+    }
+
 
     public void SaveRoomData(Room roomData)
     {
@@ -107,10 +117,19 @@ public class StorageContainerManager : MonoBehaviour
 
     public void SetContainerAsActive(StorageContainerMono containerMono)
     {
-        if(activeContainer != containerMono)
-            activeContainer.SetContainerActiveVisual(false);
-        activeContainer = containerMono;
+        if(activeContainer == null)
+        {
+            activeContainer = containerMono;
+            return;
+        }
+
+        if(activeContainer == containerMono)
+            activeContainer = null;
+        else
+            activeContainer = containerMono;
+
     }
+
 
 
 

@@ -12,14 +12,19 @@ public class StorageContainerMono : MonoBehaviour
     [SerializeField] Material _normalMaterial;
     [SerializeField] Material _activeMaterial;
 
+    public bool IsActivated;
+
     public void CreateContainer(int containerID)
     {
         _containerID = containerID;
     }
 
-    public void SetContainerAsActive()
+    public void SetContainerAsActive(bool value)
     {
-        StorageContainerManager.Instance.SetContainerAsActive(this);
+        if(value == true)
+            StorageContainerManager.Instance.SetContainerAsActive(this);
+        IsActivated = value;
+        SetContainerActiveVisual(value);
     }
 
     public void SetContainerActiveVisual(bool value)
@@ -28,6 +33,11 @@ public class StorageContainerMono : MonoBehaviour
             _renderer.material = _activeMaterial;
         else
             _renderer.material = _normalMaterial;
+    }
+
+    public int GetContainerID()
+    {
+        return _containerID;
     }
 
 

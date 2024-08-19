@@ -3,38 +3,34 @@ using Oculus.Interaction;
 
 public class StorageContainerCustomPokeInteraction : MonoBehaviour
 {
-    [SerializeField]
-    private PokeInteractable _pokeInteractable;
 
     [SerializeField] private StorageContainerMono storageContainerMono;
 
 
-
-    protected virtual void OnEnable()
+    void OnTriggerEnter(Collider collider)
     {
-        _pokeInteractable.WhenStateChanged += UpdateContainer;
+        if(!collider.GetComponent<HandTag>())
+        return;
+
+        UpdateContainer();
     }
 
-    protected virtual void OnDisable()
+     void OnTriggerExit(Collider collider)
     {
-        _pokeInteractable.WhenStateChanged -= UpdateContainer;
+
     }
 
-    void UpdateContainer(InteractableStateChangeArgs args)
-    {
-        Debug.LogWarning("poked");
 
-        if (_pokeInteractable.State == InteractableState.Select)
+    void UpdateContainer()
+    {
+
+        if (storageContainerMono.IsActivated)
         {
-            storageContainerMono.SetContainerAsActive();
-            storageContainerMono.SetContainerActiveVisual(true);
-            Debug.LogWarning("Active");
+            storageContainerMono.SetContainerAsActive(false);
         }
-        else if (_pokeInteractable.State == InteractableState.Normal)
+        else 
         {
-            storageContainerMono.SetContainerAsActive();
-            storageContainerMono.SetContainerActiveVisual(false);
-            Debug.LogWarning("normal");
+            storageContainerMono.SetContainerAsActive(true);
         }
 
     }
