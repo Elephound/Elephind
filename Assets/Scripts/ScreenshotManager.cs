@@ -26,12 +26,12 @@ public class ScreenshotManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Application.isEditor)
+      /*  if (Application.isEditor)
         {
             CacheEmptyTexture();
-        }
-        else
-        {
+        } */
+     //   else
+     //  {
             if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
             {
                 Permission.RequestUserPermission(Permission.ExternalStorageRead);
@@ -45,7 +45,7 @@ public class ScreenshotManager : MonoBehaviour
             {
                 Permission.RequestUserPermission(Permission.ExternalStorageWrite);
             }
-        }
+     //   }
 
 
         persistentDataPath = Application.persistentDataPath;
@@ -125,15 +125,10 @@ public class ScreenshotManager : MonoBehaviour
     {
 
         var fileData = File.ReadAllBytes(imagePath);
-        Texture2D tex = new(2, 2);
-        int containerID = StorageContainerManager.Instance.UpdateContainerScreenshot(tex);
-        if(containerID ==  -1)
-            Debug.LogError("Could not store Screenshot, there was no active Storage");
-
-
+        Texture2D tex = new(720, 720);
         if (tex.LoadImage(fileData))
         {
-            StoreImage(tex, containerID);
+        //    StoreImage(tex, containerID);
 
             cachedTexture = tex;
             if (deleteAfterProcessing)
@@ -145,6 +140,12 @@ public class ScreenshotManager : MonoBehaviour
         {
             Debug.LogError("Failed to load image from path: " + imagePath);
         }
+
+
+        int containerID = StorageContainerManager.Instance.UpdateContainerScreenshot(tex);
+        if(containerID ==  -1)
+            Debug.LogError("Could not store Screenshot, there was no active Storage");
+
 
         yield return null;
     }

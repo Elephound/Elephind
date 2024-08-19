@@ -58,7 +58,7 @@ public class StorageContainer
 
     public Texture2D GetTexture2D()
     {
-         Texture2D texture = new Texture2D(2, 2);
+         Texture2D texture = new Texture2D(1440, 1440);
         texture.LoadImage(ScreenshotData); // Load texture from byte array
         return texture;
     }
@@ -69,7 +69,7 @@ public class StorageContainerManager : MonoBehaviour
 {
 
     int _roomID;
-    List<StorageContainer> _storageContainers = new List<StorageContainer>();
+    List<StorageContainerMono> _storageContainerMonos = new List<StorageContainerMono>();
     public Room room = new Room();
 
     private string _filePath;
@@ -110,18 +110,48 @@ public class StorageContainerManager : MonoBehaviour
     {
         SetupPhaseChanged.Invoke(true);
         IsInSetupPhase=true;
+
+        DisableAllHighlights();
     }
 
     public void EndSetupPhase()
     {
         SetupPhaseChanged.Invoke(false);
         IsInSetupPhase=false;
+
+        activeContainer = null;
+        DisableAllHighlights();
+
+    }
+
+    public void RegisterStorageContainerMono(StorageContainerMono storageContainerMono )
+    {
+        _storageContainerMonos.Add(storageContainerMono);
+    }
+
+    void DisableAllHighlights()
+    {
+        foreach(StorageContainerMono storageContainerMono in _storageContainerMonos)
+        {
+            storageContainerMono.SetContainerActiveVisual(false);
+        }
+    }
+
+    void HighlighSpecificContainer(List<int> ids)
+    {
+        foreach(int id in ids)
+        {
+            foreach(StorageContainerMono storageContainerMono in _storageContainerMonos)
+            {
+                if(storageContainerMono.GetContainerID() == id)
+                    storageContainerMono.SetContainerActiveVisual(true);
+            }
+        }
     }
 
     public void CreateStorageContainer()
     {
         StorageContainer newStorageContainer = new StorageContainer(activeContainer.GetContainerID(), null);
-        Debug.LogWarning("Adding " +activeContainer.GetContainerID() );
         room.AddStorageContainer(newStorageContainer);
     }
 
