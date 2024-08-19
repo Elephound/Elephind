@@ -4,19 +4,32 @@ using UnityEngine;
 
 public class WebRequester : MonoBehaviour
 {
-   [SerializeField] private string baseWebAddress;
+    [SerializeField] private string baseWebAddress;
+    [SerializeField] private string sessionId;
 
 
-   public void TestCall()
-   {
+    void Awake()
+    {
+        
+    }
+
+    private void Start()
+    {
+        Debug.Log("Start: Fuck (- where is) the hammer?!");
+        StartCoroutine(GetRequest(baseWebAddress));
+    }
+
+    public void TestCall()
+    {
         GetRequest(baseWebAddress);
-   }
+    }
 
 
     public void SendTranscription(string text)
     {
 
     }
+
 
     IEnumerator TestUpload()
     {
@@ -35,15 +48,17 @@ public class WebRequester : MonoBehaviour
         }
     }
 
-     IEnumerator GetRequest(string uri)
+    IEnumerator GetRequest(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
+            Debug.Log("GetRequest 1: " + uri);
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
             string[] pages = uri.Split('/');
             int page = pages.Length - 1;
+            Debug.Log("GetRequest 2: " + uri);
 
             switch (webRequest.result)
             {
@@ -60,4 +75,4 @@ public class WebRequester : MonoBehaviour
             }
         }
     }
- }
+}
