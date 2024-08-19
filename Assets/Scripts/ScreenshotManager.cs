@@ -16,6 +16,7 @@ public class ScreenshotManager : MonoBehaviour
     [SerializeField] private ScreenshotSender _screenshotSender;
 
     private readonly string path = "/storage/emulated/0/Oculus/Screenshots/";
+
     private FileSystemWatcher fileSystemWatcher;
     private readonly Queue<string> imageQueue = new();
 
@@ -125,18 +126,14 @@ public class ScreenshotManager : MonoBehaviour
 
         var fileData = File.ReadAllBytes(imagePath);
         Texture2D tex = new(2, 2);
-        bool succesful = StorageContainerManager.Instance.UpdateContainerScreenshot(tex);
-        if(!succesful)
+        int containerID = StorageContainerManager.Instance.UpdateContainerScreenshot(tex);
+        if(containerID ==  -1)
             Debug.LogError("Could not store Screenshot, there was no active Storage");
 
-      
 
         if (tex.LoadImage(fileData))
         {
-
-            //TODO not only send image but also storage ID and session ID
-            // _screenshotSender?.SendImageToBackend(tex);
-            StoreImage(tex);
+            StoreImage(tex, containerID);
 
             cachedTexture = tex;
             if (deleteAfterProcessing)
@@ -204,16 +201,21 @@ public class ScreenshotManager : MonoBehaviour
         }
     }
 
-    void StoreImage(Texture2D tex)
+    void StoreImage(Texture2D tex, int containerID)
     {
         byte[] imageBytes = tex.EncodeToJPG(); 
 
         // Specify the file name
-        string fileName = "MyImage.jpg"; // Use Storage Container ID as name to reallocate
+        string fileName = containerID.ToString() + ".jpg"; // Use Storage Container ID as name to reallocate
 
         string folder = "/ourImages";
         // Combine the path and file name
-        string filePath = System.IO.Path.Combine(path+folder, fileName);
+        string filePath = System.IO.Path.Combine(persistentDataPath+folder, fileName);
+
+        if (!Directory.Exists(filePath))
+        {
+            Directory.CreateDirectory(filePath);
+        }
 
         // Write the image bytes to the file
         File.WriteAllBytes(filePath, imageBytes);

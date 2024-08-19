@@ -126,27 +126,25 @@ public class StorageContainerManager : MonoBehaviour
     }
 
 
-    public bool UpdateContainerScreenshot(Texture2D texture)
+    public int UpdateContainerScreenshot(Texture2D texture)
     {
         if(activeContainer == null)
         {
             Debug.LogError("no active Container");
-            return false;
+            return -1;
         }
 
         int id = activeContainer.GetContainerID();
-        Debug.LogWarning("ID found " + id);
 
-        Debug.LogWarning( "room numer of storageContainers" + room.StorageContainers.Count);
         StorageContainer storageToUpdate = room.StorageContainers.Find(storage => storage.ContainerID == id);
         if(storageToUpdate == null)
         {Debug.LogError("StorageToUpdate is null");
-        return false;
+        return -1;
         }
         storageToUpdate.UpdateTextureData(texture);
 
         SendToBackend(storageToUpdate);
-        return true;
+        return id;
     }
 
     void SendToBackend(StorageContainer storageToUpdate)
