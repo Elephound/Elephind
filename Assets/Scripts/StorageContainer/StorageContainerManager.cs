@@ -63,6 +63,8 @@ public class StorageContainerManager : MonoBehaviour
 
     static public StorageContainerManager Instance;
 
+    StorageContainerMono activeContainer;
+
 
     void Awake()
     {
@@ -101,6 +103,13 @@ public class StorageContainerManager : MonoBehaviour
             Debug.LogWarning("No data found at " + finalFilePath);
             return new Room(); // Return an empty data object if no file is found
         }
+    }
+
+    public void SetContainerAsActive(StorageContainerMono containerMono)
+    {
+        if(activeContainer != containerMono)
+            activeContainer.SetContainerActiveVisual(false);
+        activeContainer = containerMono;
     }
 
 
