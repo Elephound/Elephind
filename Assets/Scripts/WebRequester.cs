@@ -21,6 +21,9 @@ public class WebRequester : MonoBehaviour
     [SerializeField] private string sessionId;
 
     public UnityEvent<GenericResponse> RequestCompleted;
+    
+    public UnityEvent WebRequestSent;
+
 
 
     // Dictionary to store header key-value pairs
@@ -73,6 +76,7 @@ public class WebRequester : MonoBehaviour
         {
             AddHeaders(www); // Header hinzufügen
 
+            WebRequestSent.Invoke();
             yield return www.SendWebRequest();
 
             if (www.result != UnityWebRequest.Result.Success)
@@ -98,6 +102,7 @@ public class WebRequester : MonoBehaviour
         {
             AddHeaders(www); // Header hinzufügen
 
+            WebRequestSent.Invoke();
             yield return www.SendWebRequest();
 
             if (www.result != UnityWebRequest.Result.Success)
@@ -149,6 +154,7 @@ public class WebRequester : MonoBehaviour
             Debug.Log("GetRequest 1: " + uri);
 
             AddHeaders(webRequest); // Add headers to the request
+
 
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();

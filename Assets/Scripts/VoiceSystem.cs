@@ -31,6 +31,8 @@ public class VoiceSystem : MonoBehaviour
 
     static public VoiceSystem Instance;
 
+    [SerializeField] GameObject DEBUGOBJECT;
+
 
 
     void Awake()
@@ -43,6 +45,8 @@ public class VoiceSystem : MonoBehaviour
         _appVoiceExperience.VoiceEvents.OnFullTranscription.AddListener(OnFullTranscription);
 
         StartCoroutine(ActivateDelayed());
+
+        DEBUGOBJECT.SetActive (false);
     }
 
 
@@ -51,6 +55,8 @@ public class VoiceSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         _appVoiceExperience.Activate();
+
+        SpeakText("Hi, i'm Elli. Ask me anything!");
     }
 
     private void ReactivateVoice() => _appVoiceExperience.Activate();
@@ -59,6 +65,7 @@ public class VoiceSystem : MonoBehaviour
     {
         _voiceCommandReady = true;
         _wakeWordDetected.Invoke();
+        DEBUGOBJECT.SetActive (true);
     }
 
     void OnPartialTranscription(string transcription)
@@ -73,6 +80,7 @@ public class VoiceSystem : MonoBehaviour
         _voiceCommandReady = false;
         _transcriptionText = transcription;
         _completeTranscription?.Invoke(_transcriptionText);
+        DEBUGOBJECT.SetActive (false);
     }
 
     private void OnDestroy()

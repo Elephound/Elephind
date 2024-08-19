@@ -20,9 +20,9 @@ MonoBehaviour:
     isPrivate: 0
     createdAt: 2024-08-18T05:24:36-0700
     trainingStatus: 1
-    lastTrainDuration: 65
-    lastTrainedAt: 2024-08-18T08:44:32-0700
-    nextTrainAt: 2024-08-18T08:43:27-0700
+    lastTrainDuration: 117
+    lastTrainedAt: 2024-08-19T04:21:08-0700
+    nextTrainAt: 2024-08-19T04:19:11-0700
     intents:
     - id: 540063128359567
       name: wakeWord
@@ -38,6 +38,9 @@ MonoBehaviour:
       - name: wakeWord
         id: 1569163674033921
       keywords:
+      - keyword: Hey Elli
+        synonyms:
+        - hey elli
       - keyword: Oklahoma
         synonyms:
         - oklahoma
