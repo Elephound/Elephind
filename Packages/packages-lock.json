@@ -296,6 +296,12 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.volorf.figma-ui-image": {
+      "version": "file:C:/Users/aksha/Downloads/figma-ui-image-main/figma-ui-image-main",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
