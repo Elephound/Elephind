@@ -140,7 +140,7 @@ public class StorageContainerManager : MonoBehaviour
         SetupPhaseChanged.Invoke(false);
         IsInSetupPhase=false;
 
-DEBUGOBJECT.SetActive(false);
+        DEBUGOBJECT.SetActive(false);
         activeContainer = null;
         DisableAllHighlights();
 
@@ -159,7 +159,7 @@ DEBUGOBJECT.SetActive(false);
         }
     }
 
-    void HighlighSpecificContainer(List<int> ids)
+    public void HighlighSpecificContainer(List<int> ids)
     {
         foreach(int id in ids)
         {
