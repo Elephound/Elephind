@@ -63,6 +63,7 @@ public class VoiceSystem : MonoBehaviour
 
     public void WakeWordDetected(string[] arg0)
     {
+        Debug.LogWarning("Wake Word Detected");
         _voiceCommandReady = true;
         _wakeWordDetected.Invoke();
         DEBUGOBJECT.SetActive (true);

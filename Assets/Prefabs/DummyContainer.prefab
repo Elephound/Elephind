@@ -230,6 +230,7 @@ MonoBehaviour:
   _renderer: {fileID: 2646739748128692201}
   _normalMaterial: {fileID: 2100000, guid: cc8747b3266f5c84c8b5c623c79db926, type: 2}
   _activeMaterial: {fileID: 2100000, guid: a24866f4e87cc694d89d0116390aa5e0, type: 2}
+  _markedMaterial: {fileID: 2100000, guid: 29c9b14657abd164d82530948bf40ef7, type: 2}
   _ownCollider: {fileID: 7286350307704684305}
   _firstStageUI: {fileID: 5637784825765878995}
   _containerName: {fileID: 1593270910894791135}

@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.UIElements;
 
 
 public class StorageContainerMono : MonoBehaviour
@@ -19,6 +20,7 @@ public class StorageContainerMono : MonoBehaviour
     [SerializeField] Renderer _renderer;
     [SerializeField] Material _normalMaterial;
     [SerializeField] Material _activeMaterial;
+      [SerializeField] Material _markedMaterial;
     [SerializeField] Collider _ownCollider;
 
 
@@ -28,7 +30,7 @@ public class StorageContainerMono : MonoBehaviour
     [SerializeField] TextMeshProUGUI _containerName;
      [SerializeField] TextMeshProUGUI _contentText;
     [SerializeField] GameObject _secondStageUI;
-      [SerializeField] Image _containerImage;
+    [SerializeField] UnityEngine.UI.Image _containerImage;
 
     public bool IsActivated;
 
@@ -94,13 +96,17 @@ public class StorageContainerMono : MonoBehaviour
         IsActivated = value;
     }
 
-    public void SetContainerActiveVisual(bool value)
+    public void SetContainerActiveVisual(int value)
     {
-        if (value == true)
-            _renderer.material = _activeMaterial;
-        else
+        if(value == 0)
             _renderer.material = _normalMaterial;
+        else if (value == 1)
+            _renderer.material = _activeMaterial;
+        else if (value == 2)
+         _renderer.material = _markedMaterial;
     }
+
+
 
     public int GetContainerID()
     {

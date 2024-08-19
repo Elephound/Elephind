@@ -155,18 +155,22 @@ public class StorageContainerManager : MonoBehaviour
     {
         foreach(StorageContainerMono storageContainerMono in _storageContainerMonos)
         {
-            storageContainerMono.SetContainerActiveVisual(false);
+            storageContainerMono.SetContainerActiveVisual(0);
         }
     }
 
     public void HighlighSpecificContainer(List<int> ids)
     {
+        DisableAllHighlights();
         foreach(int id in ids)
         {
             foreach(StorageContainerMono storageContainerMono in _storageContainerMonos)
             {
+            
+                Debug.LogWarning("Return ID " + id + " / Container ID " + storageContainerMono.GetContainerID().ToString() );
+
                 if(storageContainerMono.GetContainerID() == id)
-                    storageContainerMono.SetContainerActiveVisual(true);
+                    storageContainerMono.SetContainerActiveVisual(2);
             }
         }
     }
@@ -246,18 +250,18 @@ public class StorageContainerManager : MonoBehaviour
         if(activeContainer == null)
         {
             activeContainer = containerMono;
-            containerMono.SetContainerActiveVisual(true);
+            containerMono.SetContainerActiveVisual(1);
             return;
         }
 
-        activeContainer.SetContainerActiveVisual(false);
+        activeContainer.SetContainerActiveVisual(0);
 
         if(activeContainer == containerMono)
             activeContainer = null;
         else
             activeContainer = containerMono;
 
-        containerMono.SetContainerActiveVisual(true);
+        containerMono.SetContainerActiveVisual(1);
 
     }
 
