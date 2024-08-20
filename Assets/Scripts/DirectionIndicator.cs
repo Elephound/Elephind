@@ -10,8 +10,17 @@ public class DirectionIndicator : MonoBehaviour
     
     [SerializeField]
     private GameObject targetObject;
+    [SerializeField]
+    private GameObject[] targetObjects;
     public float nearDistance = 3f; // Near distance threshold
     public float farDistance = 7f; // Far distance threshold
+
+    public GameObject[] TargetObjects
+    {
+        get { return targetObjects; }
+        set { targetObjects = value; }
+    }
+
     public GameObject TargetObject
     {
         get { return targetObject; }
@@ -26,6 +35,8 @@ public class DirectionIndicator : MonoBehaviour
     public float farThreshold = 1.0f;     // Distance for red color
     public TextMeshProUGUI distanceText;
     private float distance = 0;
+
+    private int currentTargetIndex=0;
 
 
     private static DirectionIndicator _instance;
@@ -47,7 +58,7 @@ public class DirectionIndicator : MonoBehaviour
     }
     private void Start(){
 
-        if(targetObject){
+        if(targetObject == null || targetObjects == null){
             arrowIndicator.SetActive(true);
             distanceText.gameObject.SetActive(true);
         }
@@ -59,7 +70,23 @@ public class DirectionIndicator : MonoBehaviour
         //indicatorArrow.transform.gameObject.SetActive(true);
         
     }
-   
+    
+    public void NextTarget(){
+
+        currentTargetIndex++;
+        
+        if(currentTargetIndex<targetObjects.Length){
+            targetObject  = targetObjects[currentTargetIndex];
+        }
+        else{
+            targetObject = null;
+            targetObjects = null;
+            currentTargetIndex = 0;
+            arrowIndicator.SetActive(false);
+            distanceText.gameObject.SetActive(false);
+        }
+
+    }
 
 
 

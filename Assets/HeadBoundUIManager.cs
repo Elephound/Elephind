@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class HeadBoundUIManager : MonoBehaviour
 {
-    public UnityEvent welcomeScreenClosed,OnAppWasStarted;
+    public UnityEvent welcomeScreenClosed,OnAppWasStarted,OnShowWelcomeScreen;
     
     void Start(){
     
@@ -19,6 +19,11 @@ public class HeadBoundUIManager : MonoBehaviour
 
         welcomeScreenClosed.Invoke();
 
+    }
+
+    public void ShowWelcomeScreen(){
+
+        OnShowWelcomeScreen.Invoke();
     }
     
 }
