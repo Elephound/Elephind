@@ -3,6 +3,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using NaughtyAttributes;
+
+
 
 public class DirectionIndicator : MonoBehaviour
 {
@@ -70,7 +73,8 @@ public class DirectionIndicator : MonoBehaviour
         //indicatorArrow.transform.gameObject.SetActive(true);
         
     }
-    
+
+   	[Button("NextTarget")]
     public void NextTarget(){
 
         currentTargetIndex++;
