@@ -1,8 +1,6 @@
-
-
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 //using NaughtyAttributes;
 
 
@@ -14,11 +12,11 @@ public class DirectionIndicator : MonoBehaviour
     [SerializeField]
     private GameObject targetObject;
     [SerializeField]
-    private GameObject[] targetObjects;
+    private List<GameObject> targetObjects;
     public float nearDistance = 0.5f; // Near distance threshold
     public float farDistance = 7f; // Far distance threshold
 
-    public GameObject[] TargetObjects
+    public List<GameObject> TargetObjects
     {
         get { return targetObjects; }
         set { targetObjects = value; }
@@ -78,14 +76,22 @@ public class DirectionIndicator : MonoBehaviour
         
     }
 
+    public void TargetListUpdated()
+    {
+        if(targetObjects.Count == 0)
+            return;
+        arrowIndicator.SetActive(true);
+        targetObject = targetObjects[0];
+    }
+
    	//[Button("NextTarget")]
     public void NextTarget(){
 
         currentTargetIndex++;
 
-        Debug.Log(targetObjects.Length);
+        Debug.Log(targetObjects.Count);
         
-        if(currentTargetIndex < targetObjects.Length){
+        if(currentTargetIndex < targetObjects.Count){
             targetObject  = targetObjects[currentTargetIndex];
         }
         else{

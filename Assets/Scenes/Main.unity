@@ -468,6 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a555af69f0e32d488b76900472a6810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _storageContainerMonos: []
   room:
     RoomID: 1245
   IsInSetupPhase: 0
@@ -890,7 +891,7 @@ PrefabInstance:
     - target: {fileID: 2199106584629198570, guid: eaa0d72a4de294f13a70c7231b975019,
         type: 3}
       propertyPath: targetObjects.Array.size
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2199106584629198570, guid: eaa0d72a4de294f13a70c7231b975019,
         type: 3}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -58,6 +59,18 @@ public class ResponseManager : MonoBehaviour
         }
 
         StorageContainerManager.Instance.HighlighSpecificContainer(ids);
+
+        foreach(int id in ids)
+        {
+            foreach(StorageContainerMono mono in StorageContainerManager.Instance._storageContainerMonos)
+            {
+                if(mono.GetContainerID() == id)
+                  DirectionIndicator.Instance.TargetObjects.Add(mono.gameObject);
+            }
+        }
+
+        DirectionIndicator.Instance.TargetListUpdated();
+
 
 
     }

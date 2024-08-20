@@ -78,7 +78,7 @@ public class StorageContainerManager : MonoBehaviour
 {
 
     int _roomID;
-    List<StorageContainerMono> _storageContainerMonos = new List<StorageContainerMono>();
+    public List<StorageContainerMono> _storageContainerMonos = new List<StorageContainerMono>();
     public Room room = new Room();
 
     private string _filePath;
