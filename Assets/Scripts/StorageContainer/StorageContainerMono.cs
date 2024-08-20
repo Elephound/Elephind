@@ -21,6 +21,7 @@ public class StorageContainerMono : MonoBehaviour
     [SerializeField] Material _normalMaterial;
     [SerializeField] Material _activeMaterial;
     [SerializeField] Material _markedMaterial;
+     [SerializeField] Material _searchMaterial;
     [SerializeField] Collider _ownCollider;
 
 
@@ -105,6 +106,8 @@ public class StorageContainerMono : MonoBehaviour
             _renderer.material = _activeMaterial;
         else if (value == 2)
             _renderer.material = _markedMaterial;
+        else if (value == 3)
+            _renderer.material = _searchMaterial;
     }
 
 

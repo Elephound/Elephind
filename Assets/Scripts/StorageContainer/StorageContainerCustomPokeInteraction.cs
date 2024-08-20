@@ -10,7 +10,6 @@ public class StorageContainerCustomPokeInteraction : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.LogWarning("Touched");
         if(!collider.GetComponent<HandTag>())
         return;
 
@@ -20,7 +19,6 @@ public class StorageContainerCustomPokeInteraction : MonoBehaviour
         if(isTouched)
             return;
 
-        Debug.LogWarning("OK");
         isTouched=true;
         UpdateContainer();
     }

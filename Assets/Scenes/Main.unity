@@ -542,6 +542,201 @@ PrefabInstance:
       propertyPath: resultTextPanel
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: RequestCompleted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: RequestCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1924218676}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 587220175}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1924218676}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 587220175}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: RequestCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 587220175}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: StartRotate
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: RequestCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StopRotate
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: RequestCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopRotate
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: RotateEli, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: RotateEli, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: RequestCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RotateEli, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Ok, im working on it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: Ok, im working on it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Whoops, something went wrong!
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Whoops, something went wrong!
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: RequestCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -650,6 +845,7 @@ GameObject:
   - component: {fileID: 397605459}
   - component: {fileID: 397605458}
   - component: {fileID: 397605457}
+  - component: {fileID: 397605460}
   m_Layer: 0
   m_Name: '[BuildingBlock] Controller Buttons Mapper'
   m_TagString: Untagged
@@ -708,7 +904,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - Title: Erase all spatial anchors
+  - Title: Reset Intro Box
     Button: 32768
     ButtonMode: 0
     Callback:
@@ -774,6 +970,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 1924218681}
+          m_TargetAssemblyTypeName: IntroBoxTrigger, Assembly-CSharp
+          m_MethodName: AnyButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 397605460}
+          m_TargetAssemblyTypeName: DEBUG, Assembly-CSharp
+          m_MethodName: LogWarning
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: CLICK
+            m_BoolArgument: 1
+          m_CallState: 2
   - Title: DeActivateVoice
     Button: 16384
     ButtonMode: 0
@@ -806,24 +1026,6 @@ MonoBehaviour:
           m_CallState: 2
   - Title: HideIntro
     Button: 8192
-    ButtonMode: 1
-    Callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1924218681}
-          m_TargetAssemblyTypeName: IntroBoxTrigger, Assembly-CSharp
-          m_MethodName: AnyButton
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - Title: HideIntro
-    Button: 16384
     ButtonMode: 1
     Callback:
       m_PersistentCalls:
@@ -909,6 +1111,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &397605460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397605456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6ac7533005e7941b45a858de13229b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &587220175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8148285707573429933, guid: 489a79a55b4251d46b7db909f99a7972,
+    type: 3}
+  m_PrefabInstance: {fileID: 1924218675}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2261a11f491d2e54882e7fcaae9c52f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &595573543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,6 +1899,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037290772041883522, guid: 489a79a55b4251d46b7db909f99a7972,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -62
       objectReference: {fileID: 0}
     - target: {fileID: 6637639593975177150, guid: 489a79a55b4251d46b7db909f99a7972,
         type: 3}

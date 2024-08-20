@@ -24,6 +24,8 @@ public class WebRequester : MonoBehaviour
     
     public UnityEvent WebRequestSent;
 
+     public UnityEvent WebRequestError;
+
 
 
     // Dictionary to store header key-value pairs
@@ -95,7 +97,7 @@ public class WebRequester : MonoBehaviour
             if (www.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError(www.error);
-                resultTextPanel.text = "Error: " + www.error;
+                //resultTextPanel.text = "Error: " + www.error;
             }
             else
             {
@@ -104,22 +106,27 @@ public class WebRequester : MonoBehaviour
                 Debug.Log("Server: " + jsonResponse);
 
                 GenericResponse responseObject = JsonConvert.DeserializeObject<GenericResponse>(jsonResponse);
-                resultTextPanel.text = responseObject.chat_response;
+                //resultTextPanel.text = responseObject.chat_response;
 
 
             //TODO DEBUG FOREACH
-                foreach (StorageUnit su in responseObject.storageunits)
+               /* foreach (StorageUnit su in responseObject.storageunits)
                 {
                     resultTextPanel.text += "\n " + su.name + " (" + su.items.Count + " - ID:"+su.id+", "+su.description+")";
                     foreach(Item item in su.items)
                     {
                         resultTextPanel.text += "\n - " + item.name + " (" + item.quantity + ", "+item.description+", "+item.category+")";
                     }
-                }
+                } ' */
         
                 RequestCompleted.Invoke(responseObject);
             }
         }
+    }
+
+    public void SentError()
+    {
+        WebRequestError.Invoke();
     }
 
     IEnumerator CaptureStorageUnitFromImage(string _storageUnitId, string _imageBase64Encoded, string _storageUnitName, string _sessionId)
@@ -138,7 +145,7 @@ public class WebRequester : MonoBehaviour
             if (www.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError(www.error);
-                resultTextPanel.text = "Error: " + www.error;
+                //resultTextPanel.text = "Error: " + www.error;
             }
             else
             {
@@ -147,17 +154,17 @@ public class WebRequester : MonoBehaviour
                 Debug.Log("Server: " + jsonResponse);
 
                 GenericResponse responseObject = JsonConvert.DeserializeObject<GenericResponse>(jsonResponse);
-                resultTextPanel.text = responseObject.chat_response;
+               // resultTextPanel.text = responseObject.chat_response;
                 
 
-                foreach (StorageUnit su in responseObject.storageunits)
+               /* foreach (StorageUnit su in responseObject.storageunits)
                 {
                     resultTextPanel.text += "\n " + su.name + " (" + su.items.Count + " - ID:"+su.id+", "+su.description+")";
                     foreach(Item item in su.items)
                     {
                         resultTextPanel.text += "\n - " + item.name + " (" + item.quantity + ", "+item.description+", "+item.category+")";
                     }
-                }
+                } */
 
                 Debug.Log(responseObject);
                 RequestCompleted.Invoke(responseObject);

@@ -484,6 +484,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -52.805
       objectReference: {fileID: 0}
+    - target: {fileID: 4046161446362401095, guid: 47b81a139fd0a824fab0b63f0c7735df,
+        type: 3}
+      propertyPath: _searchMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: b0f89c48a0b64f84bb24145708123c4e, type: 2}
     - target: {fileID: 5497525728761966498, guid: 47b81a139fd0a824fab0b63f0c7735df,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -633,11 +638,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DummyContainer
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768997684829296424, guid: 47b81a139fd0a824fab0b63f0c7735df,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

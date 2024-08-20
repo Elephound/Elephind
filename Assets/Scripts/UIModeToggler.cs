@@ -11,6 +11,7 @@ public class UIModeToggler : MonoBehaviour
     void Start()
     {
         StorageContainerManager.Instance.SetupPhaseChanged.AddListener(SwitchMode);
+        SwitchMode(true);
     }
 
     void SwitchMode(bool value)

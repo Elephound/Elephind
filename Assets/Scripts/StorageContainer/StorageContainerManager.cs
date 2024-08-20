@@ -127,7 +127,7 @@ public class StorageContainerManager : MonoBehaviour
         SetupPhaseChanged.Invoke(true);
         IsInSetupPhase=true;
 
-        DisableAllHighlights();
+        ColorAllBoxes(0);
     }
 
     public void EndSetupPhase()
@@ -136,7 +136,7 @@ public class StorageContainerManager : MonoBehaviour
         IsInSetupPhase=false;
 
         activeContainer = null;
-        DisableAllHighlights();
+        ColorAllBoxes(3);
 
     }
 
@@ -149,7 +149,15 @@ public class StorageContainerManager : MonoBehaviour
     {
         foreach(StorageContainerMono storageContainerMono in _storageContainerMonos)
         {
-            storageContainerMono.SetContainerActiveVisual(0);
+            storageContainerMono.SetContainerActiveVisual(3);
+        }
+    }
+
+      void ColorAllBoxes(int colorState)
+    {
+        foreach(StorageContainerMono storageContainerMono in _storageContainerMonos)
+        {
+            storageContainerMono.SetContainerActiveVisual(colorState);
         }
     }
 
@@ -181,6 +189,7 @@ public class StorageContainerManager : MonoBehaviour
         if(activeContainer == null)
         {
             Debug.LogError("no active Container");
+            WebRequester.Instance.SentError();
             return -1;
         }
 
@@ -189,6 +198,7 @@ public class StorageContainerManager : MonoBehaviour
         StorageContainer storageToUpdate = room.StorageContainers.Find(storage => storage.ContainerID == id);
         if(storageToUpdate == null)
         {Debug.LogError("StorageToUpdate is null");
+            WebRequester.Instance.SentError();
         return -1;
         }
         storageToUpdate.UpdateTextureData(texture);

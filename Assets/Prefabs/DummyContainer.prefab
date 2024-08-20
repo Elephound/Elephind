@@ -199,6 +199,7 @@ MonoBehaviour:
   _normalMaterial: {fileID: 2100000, guid: cc8747b3266f5c84c8b5c623c79db926, type: 2}
   _activeMaterial: {fileID: 2100000, guid: a24866f4e87cc694d89d0116390aa5e0, type: 2}
   _markedMaterial: {fileID: 2100000, guid: 29c9b14657abd164d82530948bf40ef7, type: 2}
+  _searchMaterial: {fileID: 0}
   _ownCollider: {fileID: 285810190547214402}
   _firstStageUI: {fileID: 5637784825765878995}
   _containerNameStage1: {fileID: 8528701821530639145}
@@ -222,7 +223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8539013355139010258
 Transform:
   m_ObjectHideFlags: 0
