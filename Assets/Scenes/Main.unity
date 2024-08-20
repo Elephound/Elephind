@@ -246,7 +246,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _speaker: {fileID: 612255839}
-  DEBUGOBJECT: {fileID: 745850965}
+  PlayerIcon: {fileID: 288329442}
   ShowTextOnUI:
     m_PersistentCalls:
       m_Calls:
@@ -474,7 +474,6 @@ MonoBehaviour:
   SetupPhaseChanged:
     m_PersistentCalls:
       m_Calls: []
-  DEBUGOBJECT: {fileID: 2026455827}
 --- !u!1001 &164658130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -643,6 +642,12 @@ Transform:
 --- !u!1 &285101646 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4916244269868506302, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
+    type: 3}
+  m_PrefabInstance: {fileID: 1710613356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &288329442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5604084056198313871, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
     type: 3}
   m_PrefabInstance: {fileID: 1710613356}
   m_PrefabAsset: {fileID: 0}
@@ -1803,6 +1808,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3084406416138196311, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3128418458080987227, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
         type: 3}
       propertyPath: vrCamera
@@ -1912,6 +1922,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 777
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98523074
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.17123193
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -361
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 195
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -19.719
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

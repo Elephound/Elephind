@@ -31,7 +31,7 @@ public class VoiceSystem : MonoBehaviour
 
     static public VoiceSystem Instance;
 
-    [SerializeField] GameObject DEBUGOBJECT;
+    [SerializeField] GameObject PlayerIcon;
 
     public UnityEvent<string> ShowTextOnUI;
 
@@ -48,7 +48,7 @@ public class VoiceSystem : MonoBehaviour
 
         StartCoroutine(ActivateDelayed());
 
-        DEBUGOBJECT.SetActive (false);
+        PlayerIcon.SetActive (false);
         SpeakText("Hi, i'm Elli. Ask me anything!");
 
     }
@@ -57,7 +57,11 @@ public class VoiceSystem : MonoBehaviour
 //do this to prevent an error 
     IEnumerator ActivateDelayed()
     {
-        yield return new WaitForSeconds(2);
+        yield return null;
+        _appVoiceExperience.Activate();
+        yield return null;
+        _appVoiceExperience.Deactivate();
+
         //_appVoiceExperience.Activate();
     }
 
@@ -65,10 +69,8 @@ public class VoiceSystem : MonoBehaviour
 
     public void WakeWordDetected(string[] arg0)
     {
-        Debug.LogWarning("Wake Word Detected");
         _voiceCommandReady = true;
         _wakeWordDetected.Invoke();
-        DEBUGOBJECT.SetActive (true);   
     }
 
 
@@ -85,7 +87,7 @@ public class VoiceSystem : MonoBehaviour
         _voiceCommandReady = false;
         _transcriptionText = transcription;
         _completeTranscription?.Invoke(_transcriptionText);
-        DEBUGOBJECT.SetActive (false);
+        PlayerIcon.SetActive(true);
     }
 
     private void OnDestroy()

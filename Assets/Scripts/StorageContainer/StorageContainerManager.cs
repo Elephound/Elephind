@@ -92,8 +92,6 @@ public class StorageContainerManager : MonoBehaviour
 
     public UnityEvent<bool> SetupPhaseChanged;
 
-    [SerializeField] GameObject DEBUGOBJECT;
-
 
     void Awake()    
     {
@@ -106,8 +104,6 @@ public class StorageContainerManager : MonoBehaviour
     {
         _filePath = Path.Combine(Application.persistentDataPath, _folderPath);
         room = new Room(); //LoadRoomData();
-
-        DEBUGOBJECT.SetActive(false);
 
     }
 
@@ -131,7 +127,6 @@ public class StorageContainerManager : MonoBehaviour
         SetupPhaseChanged.Invoke(true);
         IsInSetupPhase=true;
 
-        DEBUGOBJECT.SetActive(true);
         DisableAllHighlights();
     }
 
@@ -140,7 +135,6 @@ public class StorageContainerManager : MonoBehaviour
         SetupPhaseChanged.Invoke(false);
         IsInSetupPhase=false;
 
-        DEBUGOBJECT.SetActive(false);
         activeContainer = null;
         DisableAllHighlights();
 

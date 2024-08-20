@@ -124,13 +124,14 @@ public class StorageContainerMono : MonoBehaviour
 
         //_contentText.text = containerData.items;
 
-        Texture2D texture = containerData.GetTexture2D();
+      /*  Texture2D texture = containerData.GetTexture2D();
         if (texture != null)
         {
             _containerImage.sprite = ConvertTexture2DToSprite(texture);
         }
         else
             _containerImage.gameObject.SetActive(false);
+            */
 
     }
 
