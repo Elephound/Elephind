@@ -1798,6 +1798,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2243953792389676559, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3128418458080987227, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
         type: 3}
       propertyPath: vrCamera
@@ -1807,11 +1812,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas Head Bound UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 4916244269868506302, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4993392698484525650, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
         type: 3}
@@ -1912,61 +1912,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 326
-      objectReference: {fileID: 0}
-    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -467
-      objectReference: {fileID: 0}
-    - target: {fileID: 6037290772041883522, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -195
-      objectReference: {fileID: 0}
-    - target: {fileID: 7177872961803241577, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
-        type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 0dcc484d2e4346745baa236f020a11ae, type: 3}
-    - target: {fileID: 7714282246334341101, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 7714282246334341101, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 287
-      objectReference: {fileID: 0}
-    - target: {fileID: 7714282246334341101, guid: c21ff3dcd5cd04b4d9f8cd996671aa08,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 387
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
