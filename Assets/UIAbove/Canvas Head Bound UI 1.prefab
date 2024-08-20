@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introBox: {fileID: 6972668146491837816}
+  chatBox: {fileID: 2243953792389676559}
 --- !u!1001 &2136702705272214375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -281,6 +282,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 996229beca7864f4d8e754e69260df20, type: 3}
+--- !u!1 &2243953792389676559 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 181049844794338664, guid: 996229beca7864f4d8e754e69260df20,
+    type: 3}
+  m_PrefabInstance: {fileID: 2136702705272214375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6037290772041883522 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5651969369846123749, guid: 996229beca7864f4d8e754e69260df20,
