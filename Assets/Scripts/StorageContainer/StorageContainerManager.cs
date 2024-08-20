@@ -88,7 +88,7 @@ public class StorageContainerManager : MonoBehaviour
 
     StorageContainerMono activeContainer;
 
-    public bool IsInSetupPhase=false;
+    public bool IsInSetupPhase=true;
 
     public UnityEvent<bool> SetupPhaseChanged;
 

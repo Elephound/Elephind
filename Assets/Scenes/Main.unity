@@ -545,7 +545,7 @@ PrefabInstance:
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
         type: 3}
       propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
         type: 3}
@@ -565,6 +565,11 @@ PrefabInstance:
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
         type: 3}
       propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
@@ -590,6 +595,11 @@ PrefabInstance:
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
         type: 3}
       propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1924218678}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 587220175}
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
@@ -619,6 +629,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
         type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
       propertyPath: WebRequestError.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -635,6 +650,11 @@ PrefabInstance:
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
         type: 3}
       propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: StartRotate
       objectReference: {fileID: 0}
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
@@ -665,6 +685,11 @@ PrefabInstance:
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
         type: 3}
       propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
       value: RotateEli, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
@@ -689,6 +714,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
         type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
       propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 0}
@@ -700,6 +730,11 @@ PrefabInstance:
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
         type: 3}
       propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_StringArgument
       value: Ok, im working on it.
       objectReference: {fileID: 0}
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
@@ -720,6 +755,11 @@ PrefabInstance:
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
         type: 3}
       propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
+        type: 3}
+      propertyPath: WebRequestSent.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 9015618635317537333, guid: 7ffbf8a36d094fa46b46901c6662e7c4,
@@ -1050,7 +1090,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - Title: ActivateVoice
-    Button: 16384
+    Button: 4210688
     ButtonMode: 1
     Callback:
       m_PersistentCalls:
@@ -1091,20 +1131,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 397605460}
-          m_TargetAssemblyTypeName: DEBUG, Assembly-CSharp
-          m_MethodName: LogWarning
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: CLICK
-            m_BoolArgument: 1
-          m_CallState: 2
   - Title: DeActivateVoice
-    Button: 16384
+    Button: 4210688
     ButtonMode: 0
     Callback:
       m_PersistentCalls:
@@ -1171,6 +1199,24 @@ MonoBehaviour:
           m_CallState: 2
   - Title: HideIntro
     Button: 1
+    ButtonMode: 1
+    Callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1924218681}
+          m_TargetAssemblyTypeName: IntroBoxTrigger, Assembly-CSharp
+          m_MethodName: AnyButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Title: HideIntro
+    Button: 6316032
     ButtonMode: 1
     Callback:
       m_PersistentCalls:
@@ -2085,6 +2131,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 224661476982424310, guid: 489a79a55b4251d46b7db909f99a7972,
+        type: 3}
+      propertyPath: m_text
+      value: Press <b>Trigger</b> button to continue
+      objectReference: {fileID: 0}
     - target: {fileID: 3444539709132548747, guid: 489a79a55b4251d46b7db909f99a7972,
         type: 3}
       propertyPath: m_Name
@@ -2228,6 +2279,17 @@ PrefabInstance:
     - target: {fileID: 6637639593975177150, guid: 489a79a55b4251d46b7db909f99a7972,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302268016362133958, guid: 489a79a55b4251d46b7db909f99a7972,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2123323876090606755, guid: e9d9c7794e3bc6b40ac982cb8562e215,
+        type: 2}
+    - target: {fileID: 7302268016362133958, guid: 489a79a55b4251d46b7db909f99a7972,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8395327231116842756, guid: 489a79a55b4251d46b7db909f99a7972,

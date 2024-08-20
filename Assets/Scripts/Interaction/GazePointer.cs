@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -39,9 +40,22 @@ public class GazePointer : MonoBehaviour
 
     [SerializeField] float _secondStageDistance;
 
-    List<StorageContainerHit> storageContainerHits = new List<StorageContainerHit>();
-    List<StorageContainerHit> deleteList = new List<StorageContainerHit>();
+    List<StorageContainerMono> storageContainerMonos = new List<StorageContainerMono>();
 
+    [SerializeField] Camera mainCamera;
+
+    static public GazePointer Instance;
+
+
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
+    public void RegisterSelf(StorageContainerMono mono)
+    {
+        storageContainerMonos.Add(mono);
+    }
 
     void ShootRay()
     {
@@ -51,8 +65,8 @@ public class GazePointer : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, _rayDistance))
         {
-            if (hit.collider.tag == "StorageContainer")
-                RefreshHit(hit.transform.GetComponentInParent<StorageContainerMono>());
+           // if (hit.collider.tag == "StorageContainer")
+              //  RefreshHit(hit.transform.GetComponentInParent<StorageContainerMono>());
 
         }
         else
@@ -61,71 +75,66 @@ public class GazePointer : MonoBehaviour
 
     }
 
-    void RefreshHit(StorageContainerMono storageContainerMono)
-    {
-        StorageContainerHit storageContainerHit = storageContainerHits.Find(item => item.StorageContainerMono == storageContainerMono);
-        if (storageContainerHit == null)
-            storageContainerHits.Add(new StorageContainerHit(storageContainerMono, _maxLifeTickTime));
-        else
-            storageContainerHit.LifeTicks = _maxLifeTickTime;
+    /*void RefreshHit(StorageContainerMono storageContainerMono)
+     {
+         StorageContainerMono storageContainerHit = storageContainerMonos.Find(item => item == storageContainerMono);
+         if (storageContainerHit == null)
+         {
+             storageContainerHits.Add(new StorageContainerHit(storageContainerMono, _maxLifeTickTime));
+         }
+         else
+         {
+             storageContainerHit.LifeTicks = _maxLifeTickTime;
+         }
 
 
-    }
+     } */
 
     void Update()
     {
-        foreach (StorageContainerHit storageContainerHit in storageContainerHits)
+
+        foreach (StorageContainerMono storageContainerHit in storageContainerMonos)
         {
-            if (!storageContainerHit.UpdateLife(-Time.deltaTime, _maxLifeTickTime))
-                deleteList.Add(storageContainerHit);
+            storageContainerHit.SetUIActive(IsInView(storageContainerHit.gameObject));
             CalculateDistance(storageContainerHit);
         }
 
-        foreach (StorageContainerHit storageContainerHit in deleteList)
-        {
-            storageContainerHits.Remove(storageContainerHit);
-        }
-        deleteList.Clear();
 
-
-        if(StorageContainerManager.Instance.IsInSetupPhase)
-            return;
-
-
-        ShootRay();
+        //  ShootRay();
     }
 
-    void CalculateDistance(StorageContainerHit storageContainerHit)
+    void CalculateDistance(StorageContainerMono storageContainerHit)
     {
-        float distance = Vector3.Distance(this.transform.position, storageContainerHit.StorageContainerMono.transform.position);
+        float distance = Vector3.Distance(this.transform.position, storageContainerHit.transform.position);
 
         if (distance <= _firstStageDistance && distance <= _secondStageDistance)
         {
-            storageContainerHit.StorageContainerMono.SetFirstStageUIActive(true);
-            storageContainerHit.StorageContainerMono.SetSecondStageUIActive(true);
+            storageContainerHit.SetFirstStageUIActive(true);
+            storageContainerHit.SetSecondStageUIActive(true);
         }
         else if (distance <= _firstStageDistance && distance > _secondStageDistance)
         {
-            storageContainerHit.StorageContainerMono.SetFirstStageUIActive(true);
-            storageContainerHit.StorageContainerMono.SetSecondStageUIActive(false);
+            storageContainerHit.SetFirstStageUIActive(true);
+            storageContainerHit.SetSecondStageUIActive(false);
         }
         else
         {
-            storageContainerHit.StorageContainerMono.SetFirstStageUIActive(false);
-            storageContainerHit.StorageContainerMono.SetSecondStageUIActive(false);
+            storageContainerHit.SetFirstStageUIActive(false);
+            storageContainerHit.SetSecondStageUIActive(false);
         }
     }
 
 
 
 
-
-
-
-    bool IsObjectNearScreenCenter(Camera cam, GameObject obj)
+    bool IsInView(GameObject target)
     {
-        Vector3 viewportPoint = cam.WorldToViewportPoint(obj.transform.position);
-        float threshold = 0.1f; // Adjust this threshold to control how close to the center is considered "centered"
-        return Mathf.Abs(viewportPoint.x - 0.5f) < threshold && Mathf.Abs(viewportPoint.y - 0.5f) < threshold && viewportPoint.z > 0;
+        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(target.transform.position);
+
+        bool isInView = viewportPosition.x >= 0 && viewportPosition.x <= 1 &&
+                        viewportPosition.y >= 0 && viewportPosition.y <= 1 &&
+                        viewportPosition.z > 0;
+
+        return isInView;
     }
 }
