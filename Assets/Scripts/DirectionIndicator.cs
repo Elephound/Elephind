@@ -9,13 +9,13 @@ using TMPro;
 
 public class DirectionIndicator : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     
     [SerializeField]
     private GameObject targetObject;
     [SerializeField]
     private GameObject[] targetObjects;
-    public float nearDistance = 3f; // Near distance threshold
+    public float nearDistance = 0.5f; // Near distance threshold
     public float farDistance = 7f; // Far distance threshold
 
     public GameObject[] TargetObjects
@@ -60,15 +60,19 @@ public class DirectionIndicator : MonoBehaviour
         }
     }
     private void Start(){
+    
+        player = this.transform;
 
+        
         if(targetObject == null || targetObjects == null){
-            arrowIndicator.SetActive(true);
-            distanceText.gameObject.SetActive(true);
-        }
-        else{
-             arrowIndicator.SetActive(false);
+            arrowIndicator.SetActive(false);
             distanceText.gameObject.SetActive(false);
         }
+        else{
+             arrowIndicator.SetActive(true);
+            distanceText.gameObject.SetActive(true);
+        }
+        
 
         //indicatorArrow.transform.gameObject.SetActive(true);
         
@@ -78,8 +82,10 @@ public class DirectionIndicator : MonoBehaviour
     public void NextTarget(){
 
         currentTargetIndex++;
+
+        Debug.Log(targetObjects.Length);
         
-        if(currentTargetIndex<targetObjects.Length){
+        if(currentTargetIndex < targetObjects.Length){
             targetObject  = targetObjects[currentTargetIndex];
         }
         else{
@@ -152,11 +158,12 @@ public class DirectionIndicator : MonoBehaviour
     {
         if (distance <= nearDistance)
         {
-            distanceText.color = Color.green; // Near
+            NextTarget();
+
         }
         else if (distance > nearDistance && distance<farDistance)
         {
-            distanceText.color = Color.yellow; // Middle
+            distanceText.color = Color.green; // Middle
             return;
         }
         else if (distance >= middleThreshold)
