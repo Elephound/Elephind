@@ -52,7 +52,7 @@ public class GazePointer : MonoBehaviour
         if (Physics.Raycast(ray, out hit, _rayDistance))
         {
             if (hit.collider.tag == "StorageContainer")
-                RefreshHit(hit.transform.GetComponent<StorageContainerMono>());
+                RefreshHit(hit.transform.GetComponentInParent<StorageContainerMono>());
 
         }
         else
