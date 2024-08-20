@@ -27,6 +27,8 @@ public class StorageContainerMono : MonoBehaviour
 
     bool firsStageActive = true;
     bool secondStageActive = true;
+
+      [SerializeField] GameObject _UIParent;
     [SerializeField] GameObject _firstStageUI;
     [SerializeField] TextMeshProUGUI _containerNameStage1;
     [SerializeField] TextMeshProUGUI _containerNameStage2;
@@ -122,6 +124,9 @@ public class StorageContainerMono : MonoBehaviour
         StorageContainer containerData = StorageContainerManager.Instance.GetStorageContainerData(_containerID);
         if (containerData == null)
             return;
+
+        if(containerData.Description == String.Empty)
+            return;
         _containerNameStage1.text = containerData.Description;
         _containerNameStage2.text = containerData.Description;
 
@@ -136,6 +141,11 @@ public class StorageContainerMono : MonoBehaviour
             _containerImage.gameObject.SetActive(false);
             */
 
+    }
+
+    public void SetUIActive(bool value)
+    {
+        _UIParent.SetActive(value);
     }
 
     public void SetFirstStageUIActive(bool value)

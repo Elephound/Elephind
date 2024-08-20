@@ -42,6 +42,9 @@ public class GazePointer : MonoBehaviour
     List<StorageContainerHit> storageContainerHits = new List<StorageContainerHit>();
     List<StorageContainerHit> deleteList = new List<StorageContainerHit>();
 
+    [SerializeField] Camera mainCamera;
+
+
 
     void ShootRay()
     {
@@ -65,34 +68,28 @@ public class GazePointer : MonoBehaviour
     {
         StorageContainerHit storageContainerHit = storageContainerHits.Find(item => item.StorageContainerMono == storageContainerMono);
         if (storageContainerHit == null)
+        {
             storageContainerHits.Add(new StorageContainerHit(storageContainerMono, _maxLifeTickTime));
+        }
         else
+        {
             storageContainerHit.LifeTicks = _maxLifeTickTime;
+        }
 
 
     }
 
     void Update()
     {
+
         foreach (StorageContainerHit storageContainerHit in storageContainerHits)
         {
-            if (!storageContainerHit.UpdateLife(-Time.deltaTime, _maxLifeTickTime))
-                deleteList.Add(storageContainerHit);
+            storageContainerHit.StorageContainerMono.SetUIActive(IsInView(storageContainerHit.StorageContainerMono.gameObject));
             CalculateDistance(storageContainerHit);
         }
 
-        foreach (StorageContainerHit storageContainerHit in deleteList)
-        {
-            storageContainerHits.Remove(storageContainerHit);
-        }
-        deleteList.Clear();
 
-
-        if(StorageContainerManager.Instance.IsInSetupPhase)
-            return;
-
-
-        ShootRay();
+      //  ShootRay();
     }
 
     void CalculateDistance(StorageContainerHit storageContainerHit)
@@ -119,13 +116,14 @@ public class GazePointer : MonoBehaviour
 
 
 
-
-
-
-    bool IsObjectNearScreenCenter(Camera cam, GameObject obj)
+    bool IsInView(GameObject target)
     {
-        Vector3 viewportPoint = cam.WorldToViewportPoint(obj.transform.position);
-        float threshold = 0.1f; // Adjust this threshold to control how close to the center is considered "centered"
-        return Mathf.Abs(viewportPoint.x - 0.5f) < threshold && Mathf.Abs(viewportPoint.y - 0.5f) < threshold && viewportPoint.z > 0;
+        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(target.transform.position);
+
+        bool isInView = viewportPosition.x >= 0 && viewportPosition.x <= 1 &&
+                        viewportPosition.y >= 0 && viewportPosition.y <= 1 &&
+                        viewportPosition.z > 0;
+
+        return isInView;
     }
 }

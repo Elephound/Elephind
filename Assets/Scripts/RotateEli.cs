@@ -10,6 +10,7 @@ public class RotateEli : MonoBehaviour
 
     bool _shouldRotate = false;
 
+
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +31,6 @@ public class RotateEli : MonoBehaviour
 
     void Rotate()
     {
-        transform.Rotate(Vector3.forward, -rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(0 , 0 , transform.rotation.eulerAngles.z - (rotationSpeed * Time.deltaTime));
     }
 }
