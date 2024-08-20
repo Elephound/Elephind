@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -39,12 +40,22 @@ public class GazePointer : MonoBehaviour
 
     [SerializeField] float _secondStageDistance;
 
-    List<StorageContainerHit> storageContainerHits = new List<StorageContainerHit>();
-    List<StorageContainerHit> deleteList = new List<StorageContainerHit>();
+    List<StorageContainerMono> storageContainerMonos = new List<StorageContainerMono>();
 
     [SerializeField] Camera mainCamera;
 
+    static public GazePointer Instance;
 
+
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
+    public void RegisterSelf(StorageContainerMono mono)
+    {
+        storageContainerMonos.Add(mono);
+    }
 
     void ShootRay()
     {
@@ -54,8 +65,8 @@ public class GazePointer : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, _rayDistance))
         {
-            if (hit.collider.tag == "StorageContainer")
-                RefreshHit(hit.transform.GetComponentInParent<StorageContainerMono>());
+           // if (hit.collider.tag == "StorageContainer")
+              //  RefreshHit(hit.transform.GetComponentInParent<StorageContainerMono>());
 
         }
         else
@@ -64,52 +75,52 @@ public class GazePointer : MonoBehaviour
 
     }
 
-    void RefreshHit(StorageContainerMono storageContainerMono)
-    {
-        StorageContainerHit storageContainerHit = storageContainerHits.Find(item => item.StorageContainerMono == storageContainerMono);
-        if (storageContainerHit == null)
-        {
-            storageContainerHits.Add(new StorageContainerHit(storageContainerMono, _maxLifeTickTime));
-        }
-        else
-        {
-            storageContainerHit.LifeTicks = _maxLifeTickTime;
-        }
+    /*void RefreshHit(StorageContainerMono storageContainerMono)
+     {
+         StorageContainerMono storageContainerHit = storageContainerMonos.Find(item => item == storageContainerMono);
+         if (storageContainerHit == null)
+         {
+             storageContainerHits.Add(new StorageContainerHit(storageContainerMono, _maxLifeTickTime));
+         }
+         else
+         {
+             storageContainerHit.LifeTicks = _maxLifeTickTime;
+         }
 
 
-    }
+     } */
 
     void Update()
     {
 
-        foreach (StorageContainerHit storageContainerHit in storageContainerHits)
+        foreach (StorageContainerMono storageContainerHit in storageContainerMonos)
         {
-            storageContainerHit.StorageContainerMono.SetUIActive(IsInView(storageContainerHit.StorageContainerMono.gameObject));
+            storageContainerHit.SetUIActive(IsInView(storageContainerHit.gameObject));
             CalculateDistance(storageContainerHit);
         }
 
 
-      //  ShootRay();
+        //  ShootRay();
     }
 
-    void CalculateDistance(StorageContainerHit storageContainerHit)
+    void CalculateDistance(StorageContainerMono storageContainerHit)
     {
-        float distance = Vector3.Distance(this.transform.position, storageContainerHit.StorageContainerMono.transform.position);
+        float distance = Vector3.Distance(this.transform.position, storageContainerHit.transform.position);
 
         if (distance <= _firstStageDistance && distance <= _secondStageDistance)
         {
-            storageContainerHit.StorageContainerMono.SetFirstStageUIActive(true);
-            storageContainerHit.StorageContainerMono.SetSecondStageUIActive(true);
+            storageContainerHit.SetFirstStageUIActive(true);
+            storageContainerHit.SetSecondStageUIActive(true);
         }
         else if (distance <= _firstStageDistance && distance > _secondStageDistance)
         {
-            storageContainerHit.StorageContainerMono.SetFirstStageUIActive(true);
-            storageContainerHit.StorageContainerMono.SetSecondStageUIActive(false);
+            storageContainerHit.SetFirstStageUIActive(true);
+            storageContainerHit.SetSecondStageUIActive(false);
         }
         else
         {
-            storageContainerHit.StorageContainerMono.SetFirstStageUIActive(false);
-            storageContainerHit.StorageContainerMono.SetSecondStageUIActive(false);
+            storageContainerHit.SetFirstStageUIActive(false);
+            storageContainerHit.SetSecondStageUIActive(false);
         }
     }
 

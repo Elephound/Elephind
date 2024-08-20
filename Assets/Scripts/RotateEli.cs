@@ -31,6 +31,6 @@ public class RotateEli : MonoBehaviour
 
     void Rotate()
     {
-        transform.rotation = Quaternion.Euler(0 , 0 , transform.rotation.eulerAngles.z - (rotationSpeed * Time.deltaTime));
+        transform.localRotation = Quaternion.Euler(0 , 0 , transform.localRotation.eulerAngles.z - (rotationSpeed * Time.deltaTime));
     }
 }

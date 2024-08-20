@@ -46,6 +46,7 @@ public class StorageContainerMono : MonoBehaviour
         _containerID = GuidToInt(_ownSpatialAnchor.Uuid);
 
         StorageContainerManager.Instance.CreateStorageContainer(_containerID);
+        GazePointer.Instance.RegisterSelf(this);
 
     }
 

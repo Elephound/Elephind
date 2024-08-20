@@ -538,6 +538,7 @@ MonoBehaviour:
   _maxLifeTickTime: 5
   _firstStageDistance: 2
   _secondStageDistance: 0.5
+  mainCamera: {fileID: 7607167591870200336}
 --- !u!1 &2855624008917801194
 GameObject:
   m_ObjectHideFlags: 0
