@@ -1981,6 +1981,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7302268016362133958, guid: 489a79a55b4251d46b7db909f99a7972,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2123323876090606755, guid: e9d9c7794e3bc6b40ac982cb8562e215,
+        type: 2}
+    - target: {fileID: 7302268016362133958, guid: 489a79a55b4251d46b7db909f99a7972,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8395327231116842756, guid: 489a79a55b4251d46b7db909f99a7972,
         type: 3}
       propertyPath: m_AnchorMax.y
