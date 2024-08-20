@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using NaughtyAttributes;
+//using NaughtyAttributes;
 
 
 
@@ -74,7 +74,7 @@ public class DirectionIndicator : MonoBehaviour
         
     }
 
-   	[Button("NextTarget")]
+   	//[Button("NextTarget")]
     public void NextTarget(){
 
         currentTargetIndex++;

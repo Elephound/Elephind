@@ -1,9 +1,6 @@
-
-
-
 using UnityEngine;
 using UnityEngine.Events;
-using NaughtyAttributes;
+//using NaughtyAttributes;
 
 
 
@@ -17,14 +14,14 @@ public class HeadBoundUIManager : MonoBehaviour
     
     }
 
-   	[Button("close WelcomeScreen")]
+   	//[Button("close WelcomeScreen")]
     public void CloseWelcomeScreen(){
 
         welcomeScreenClosed.Invoke();
 
     }
 
-    [Button("show WelcomeScreen")]
+    //[Button("show WelcomeScreen")]
     public void ShowWelcomeScreen(){
 
         OnShowWelcomeScreen.Invoke();
